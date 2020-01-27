@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Modal, makeStyles, TextField, Button } from '@material-ui/core'
 import modalContext from '../modal-context'
 import useInput from '../../hooks/useInput'
-import { signIn } from '../../hooks/auth'
+import { signIn } from '../../api/auth'
 import userContext from '../../user-context'
 
 const useStyles = makeStyles(theme => ({

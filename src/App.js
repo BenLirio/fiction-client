@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import Layout from './Layout/Layout'
 import Story from './views/Story'
-import { signIn } from './hooks/auth'
+import { signIn } from './api/auth'
 import userContext from './user-context'
 
 const App = () => {

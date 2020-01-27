@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from './Header/Header'
-import Footer from './Footer/Footer'
 import {
   Drawer,
   List,
@@ -8,6 +7,8 @@ import {
   ListItemText,
   makeStyles
 } from '@material-ui/core'
+import { create } from '../api/storys'
+import userContext from '../user-context'
 
 const useStyles = makeStyles(theme => {
   console.log('theme', theme.drawerWidth)
@@ -27,6 +28,10 @@ const useStyles = makeStyles(theme => {
 
 const Layout = ({ children }) => {
   const classes = useStyles()
+  const { token } = useContext(userContext)
+  const onCreate = () => {
+    create(token).then(console.log)
+  }
   return (
     <>
       <Header />
@@ -39,7 +44,11 @@ const Layout = ({ children }) => {
           <List>
             {['new story', 'Stories', '....', '...'].map((text, index) => (
               <ListItem button key={text}>
-                <ListItemText primary={text} className={classes.listItem} />
+                <ListItemText
+                  onClick={onCreate}
+                  primary={text}
+                  className={classes.listItem}
+                />
               </ListItem>
             ))}
           </List>
