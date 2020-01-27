@@ -6,7 +6,7 @@ import {
   ListItemText,
   makeStyles
 } from '@material-ui/core'
-import { create } from '../../api/storys'
+import { create, index } from '../../api/storys'
 import userContext from '../../user-context'
 import { useHistory } from 'react-router-dom'
 
@@ -25,15 +25,16 @@ const PermanentDrawer = () => {
   const onCreate = text => {
     switch (text) {
       case 'New Story':
+        create(token).then(console.log)
         history.push('/stories/asdfasd')
         break
       case 'Stories':
+        index(token).then(console.log)
         history.push('/stories')
         break
       default:
         throw new Error()
     }
-    // create(token).then(console.log)
   }
   const classes = useStyles()
   return (

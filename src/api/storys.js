@@ -17,15 +17,12 @@ export const create = token => {
   })
 }
 
-export const signIn = credentials => {
+export const index = token => {
   return axios({
-    url: apiUrl + '/sign-in',
-    method: 'POST',
-    data: {
-      credentials: {
-        email: credentials.email,
-        password: credentials.password
-      }
+    url: apiUrl + '/storys',
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + token
     }
   })
 }
