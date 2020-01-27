@@ -1,7 +1,16 @@
 import React from 'react'
+import { AppBar, Toolbar, Button } from '@material-ui/core'
 
 const Header = () => {
-  return <div>Header</div>
+  return (
+    <>
+      <AppBar>
+        <Toolbar>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar>
+    </>
+  )
 }
 
 export default Header
