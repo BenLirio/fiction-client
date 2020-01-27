@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Modal, makeStyles } from '@material-ui/core'
+import modalContext from '../modal-context'
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -13,11 +14,12 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const SignIn = () => {
+  const { current } = useContext(modalContext)
   const classes = useStyles()
   const [open] = useState(false)
   return (
     <div>
-      <Modal open={open}>
+      <Modal open={current === 'signIn'}>
         <div className={classes.paper}>
           <h2 id="simple-modal-title">Text in a modal</h2>
           <p id="simple-modal-description">
