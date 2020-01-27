@@ -6,7 +6,7 @@ const initialModalState = {
 
 const modalContext = React.createContext(initialModalState)
 
-export const modalContextProvider = ({ children }) => {
+export const ModalContextProvider = ({ children }) => {
   return (
     <modalContext.Provider value={initialModalState}>
       {children}
