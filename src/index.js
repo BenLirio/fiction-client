@@ -8,13 +8,16 @@ import { ModalContextProvider } from './Modal/modal-context'
 import { UserContextProvider } from './user-context'
 import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import theme from './theme'
+import { BrowserRouter } from 'react-router-dom'
 
 const rootJsx = (
   <UserContextProvider>
     <ModalContextProvider>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <App />
+        <BrowserRouter>
+          <CssBaseline />
+          <App />
+        </BrowserRouter>
       </ThemeProvider>
     </ModalContextProvider>
   </UserContextProvider>
