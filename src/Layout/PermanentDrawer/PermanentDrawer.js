@@ -10,16 +10,23 @@ import {
 const useStyles = makeStyles(theme => {
   console.log('theme', theme.drawerWidth)
   return {
-    listItem: {
+    drawer: {
+      width: theme.drawerWidth
+    },
+    drawerPaper: {
       width: theme.drawerWidth
     }
   }
 })
 
-const PermanentDrawer = () => {
+const PermanentDrawer = props => {
   const classes = useStyles()
   return (
-    <Drawer variant="permanent">
+    <Drawer
+      variant="permanent"
+      className={classes.drawer}
+      classes={{ paper: classes.drawerPaper }}
+    >
       <List>
         {['All mail', 'Trash', 'Spam'].map((text, index) => (
           <ListItem button key={text}>

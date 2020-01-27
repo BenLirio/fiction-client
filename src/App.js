@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import Layout from './Layout/Layout'
-import Main from './views/Main'
+import Story from './views/Story'
 import { signIn } from './hooks/auth'
 import userContext from './user-context'
 
@@ -15,7 +15,7 @@ const App = () => {
   }, [setToken])
   return (
     <Layout>
-      <Main />
+      <Story />
     </Layout>
   )
 }
