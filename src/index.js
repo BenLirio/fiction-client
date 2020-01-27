@@ -5,11 +5,14 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 
 import { ModalContextProvider } from './Modal/modal-context'
+import { UserContextProvider } from './user-context'
 
 const rootJsx = (
-  <ModalContextProvider>
-    <App />
-  </ModalContextProvider>
+  <UserContextProvider>
+    <ModalContextProvider>
+      <App />
+    </ModalContextProvider>
+  </UserContextProvider>
 )
 
 ReactDOM.render(rootJsx, document.getElementById('root'))
