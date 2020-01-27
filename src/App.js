@@ -12,7 +12,7 @@ const App = () => {
       .then(() => {
         console.log('============= signed in =============')
       })
-  }, [])
+  }, [setToken])
   return (
     <Layout>
       <Main />

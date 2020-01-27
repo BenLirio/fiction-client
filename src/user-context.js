@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 
 const initialUserState = {
   token: null,
@@ -9,11 +9,13 @@ const userContext = React.createContext(initialUserState)
 
 export const UserContextProvider = ({ children }) => {
   const [token, setToken] = useState(null)
+
+  const setTokenCallback = useCallback(pToken => {
+    setToken(pToken)
+  }, [])
   const userState = {
     token,
-    setToken: pToken => {
-      setToken(pToken)
-    }
+    setToken: setTokenCallback
   }
 
   return (

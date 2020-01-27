@@ -6,11 +6,16 @@ import * as serviceWorker from './serviceWorker'
 
 import { ModalContextProvider } from './Modal/modal-context'
 import { UserContextProvider } from './user-context'
+import { CssBaseline, ThemeProvider } from '@material-ui/core'
+import theme from './theme'
 
 const rootJsx = (
   <UserContextProvider>
     <ModalContextProvider>
-      <App />
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
     </ModalContextProvider>
   </UserContextProvider>
 )
