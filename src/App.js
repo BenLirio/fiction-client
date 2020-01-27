@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import Layout from './Layout/Layout'
 import Story from './views/Story'
+import Storys from './views/Storys'
 import { signIn } from './api/auth'
 import userContext from './user-context'
 import { Route, Switch, Redirect } from 'react-router-dom'
@@ -20,6 +21,9 @@ const App = () => {
       <Switch>
         <Route path="/404">
           <NotFound />
+        </Route>
+        <Route exact path="/stories">
+          <Storys />
         </Route>
         <Route path="/stories/:id">
           <Story />

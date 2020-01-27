@@ -22,9 +22,18 @@ const useStyles = makeStyles(theme => ({
 const PermanentDrawer = () => {
   const { token } = useContext(userContext)
   const history = useHistory()
-  const onCreate = () => {
+  const onCreate = text => {
+    switch (text) {
+      case 'New Story':
+        history.push('/stories/asdfasd')
+        break
+      case 'Stories':
+        history.push('/stories')
+        break
+      default:
+        throw new Error()
+    }
     // create(token).then(console.log)
-    history.push('/stories/asdfasd')
   }
   const classes = useStyles()
   return (
@@ -34,13 +43,9 @@ const PermanentDrawer = () => {
       classes={{ paper: classes.drawerPaper }}
     >
       <List>
-        {['new story', 'Stories', '....', '...'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText
-              onClick={onCreate}
-              primary={text}
-              className={classes.listItem}
-            />
+        {['New Story', 'Stories'].map(text => (
+          <ListItem onClick={() => onCreate(text)} button key={text}>
+            <ListItemText primary={text} className={classes.listItem} />
           </ListItem>
         ))}
       </List>
