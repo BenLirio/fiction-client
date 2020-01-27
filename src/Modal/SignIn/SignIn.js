@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react'
-import { Modal, makeStyles } from '@material-ui/core'
+import React, { useContext } from 'react'
+import { Modal, makeStyles, TextField, Button } from '@material-ui/core'
 import modalContext from '../modal-context'
 
 const useStyles = makeStyles(theme => ({
@@ -20,10 +20,11 @@ const SignIn = () => {
     <div>
       <Modal open={current === 'signIn'} onClose={close}>
         <div className={classes.paper}>
-          <h2 id="simple-modal-title">Text in a modal</h2>
-          <p id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </p>
+          <form>
+            <TextField label="email" />
+            <TextField label="password" />
+            <Button onClick={console.log}>Login</Button>
+          </form>
         </div>
       </Modal>
     </div>
