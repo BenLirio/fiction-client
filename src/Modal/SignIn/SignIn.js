@@ -21,7 +21,7 @@ const SignIn = () => {
   const [email, bindEmail] = useInput('')
   const [password, bindPassword] = useInput('')
   const onSignIn = () => {
-    signIn({ email, password })
+    signIn({ email, password }).then(close)
   }
   return (
     <div>
