@@ -3,6 +3,8 @@ import Layout from './Layout/Layout'
 import Story from './views/Story'
 import { signIn } from './api/auth'
 import userContext from './user-context'
+import { Route, Switch, Redirect } from 'react-router-dom'
+import NotFound from './views/NotFound'
 
 const App = () => {
   const { setToken } = useContext(userContext)
@@ -15,7 +17,15 @@ const App = () => {
   }, [setToken])
   return (
     <Layout>
-      <Story />
+      <Switch>
+        <Route path="/404">
+          <NotFound />
+        </Route>
+        <Route path="/stories/:id">
+          <Story />
+        </Route>
+        <Redirect to="/404" />
+      </Switch>
     </Layout>
   )
 }
