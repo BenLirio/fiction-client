@@ -3,6 +3,8 @@ import { show } from '../api/storys'
 import userContext from '../user-context'
 import { useParams } from 'react-router-dom'
 
+// TODO: this logic is repetitive with useStories
+
 const useStory = () => {
   const { token } = useContext(userContext)
   const [story, setStory] = useState(null)
