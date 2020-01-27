@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   Drawer,
   List,
@@ -6,20 +6,23 @@ import {
   ListItemText,
   makeStyles
 } from '@material-ui/core'
+import { create } from '../../api/storys'
+import userContext from '../../user-context'
 
-const useStyles = makeStyles(theme => {
-  console.log('theme', theme.drawerWidth)
-  return {
-    drawer: {
-      width: theme.drawerWidth
-    },
-    drawerPaper: {
-      width: theme.drawerWidth
-    }
+const useStyles = makeStyles(theme => ({
+  drawer: {
+    width: theme.drawerWidth
+  },
+  drawerPaper: {
+    width: theme.drawerWidth
   }
-})
+}))
 
-const PermanentDrawer = props => {
+const PermanentDrawer = () => {
+  const { token } = useContext(userContext)
+  const onCreate = () => {
+    create(token).then(console.log)
+  }
   const classes = useStyles()
   return (
     <Drawer
@@ -28,9 +31,13 @@ const PermanentDrawer = props => {
       classes={{ paper: classes.drawerPaper }}
     >
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['new story', 'Stories', '....', '...'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemText primary={text} className={classes.listItem} />
+            <ListItemText
+              onClick={onCreate}
+              primary={text}
+              className={classes.listItem}
+            />
           </ListItem>
         ))}
       </List>
