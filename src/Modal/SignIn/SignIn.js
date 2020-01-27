@@ -14,12 +14,11 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const SignIn = () => {
-  const { current } = useContext(modalContext)
+  const { current, close } = useContext(modalContext)
   const classes = useStyles()
-  const [open] = useState(false)
   return (
     <div>
-      <Modal open={current === 'signIn'}>
+      <Modal open={current === 'signIn'} onClose={close}>
         <div className={classes.paper}>
           <h2 id="simple-modal-title">Text in a modal</h2>
           <p id="simple-modal-description">
