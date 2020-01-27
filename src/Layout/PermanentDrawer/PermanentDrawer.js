@@ -25,8 +25,11 @@ const PermanentDrawer = () => {
   const onCreate = text => {
     switch (text) {
       case 'New Story':
-        create(token).then(console.log)
-        history.push('/stories/asdfasd')
+        create(token)
+          .then(res => {
+            history.push('/stories/' + res.data.story._id)
+          })
+          .catch(console.error)
         break
       case 'Stories':
         index(token).then(console.log)

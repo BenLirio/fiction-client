@@ -26,6 +26,15 @@ export const index = token => {
     }
   })
 }
+export const show = (token, id) => {
+  return axios({
+    url: apiUrl + '/storys/' + id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  })
+}
 
 export const signOut = user => {
   return axios({

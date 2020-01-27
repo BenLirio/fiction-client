@@ -1,17 +1,19 @@
 import { useContext, useState, useCallback } from 'react'
-import { index } from '../api/storys'
+import { show } from '../api/storys'
 import userContext from '../user-context'
+import { useParams } from 'react-router-dom'
 
-const useStories = () => {
+const useStory = () => {
   const { token } = useContext(userContext)
-  const [stories, setStories] = useState(null)
+  const [story, setStory] = useState(null)
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(true)
+  const { id } = useParams()
 
-  const getStories = useCallback(() => {
+  const getStory = useCallback(() => {
     setLoading(true)
-    index(token)
-      .then(res => setStories(res.data.storys))
+    show(token, id)
+      .then(res => setStory(res.data.story))
       .then(() => {
         setError(false)
         setLoading(false)
@@ -20,13 +22,13 @@ const useStories = () => {
         setLoading(false)
         setError(true)
       })
-  }, [token])
+  }, [token, id])
   return {
     loading,
-    stories,
+    story,
     error,
-    getStories
+    getStory
   }
 }
 
-export default useStories
+export default useStory
