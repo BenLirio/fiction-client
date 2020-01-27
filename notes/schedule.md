@@ -7,6 +7,7 @@ Always be commiting. Deploy early and often.
 Here's a rough sketch of what you should do and in what order:
 
 ### Planning
+
 1.  [x] Review [project-practice](https://git.generalassemb.ly/ga-wdi-boston/full-stack-project-practice)
 1.  [x] Create User Stories
 1.  [x] Review [project-planning-wireframes-study](https://git.generalassemb.ly/ga-wdi-boston/project-planning-wireframes-study)
@@ -25,10 +26,11 @@ API
 Client
 
 1.  [x] [Download Browser Template](https://git.generalassemb.ly/ga-wdi-boston/browser-template) or [Download React Auth Template](https://git.generalassemb.ly/ga-wdi-boston/react-auth-template)
-1.  [ ] Create a Github Repository
+1.  [x] Create a Github Repository
 1.  [ ] [Deploy to Github Pages with Browser Template](https://git.generalassemb.ly/ga-wdi-boston/gh-pages-deployment-guide) or [Deploy to Github Pages with React Auth Template](https://git.generalassemb.ly/ga-wdi-boston/react-auth-template)
 
 ### API
+
 1.  [ ] Review [express-api](https://git.generalassemb.ly/ga-wdi-boston/express-api) or [rails-api](https://git.generalassemb.ly/ga-wdi-boston/rails-api)
 1.  [ ] Create your resource and end points
 1.  [ ] Test your resource's end points with curl scripts
@@ -36,6 +38,7 @@ Client
 1.  [ ] Add User ownership to resource controller
 
 ### Client
+
 1.  [ ] Review [jquery-ajax-token-auth](https://git.generalassemb.ly/ga-wdi-boston/jquery-ajax-token-auth) or [react-auth](https://git.generalassemb.ly/ga-wdi-boston/react-auth-template)
 1.  [ ] Sign Up (curl then web app)
 1.  [ ] Sign In (curl then web app)
@@ -49,6 +52,7 @@ Client
 1.  [ ] Update single resource (curl then web app)
 
 ### Final Touches
+
 1.  [ ] README
 2.  [ ] Troubleshoot/Debug
 3.  [ ] Style
