@@ -8,7 +8,7 @@ const Story = () => {
   const { token } = useContext(userContext)
   useEffect(() => {
     getStory()
-  }, [token])
+  }, [token, getStory])
   return (
     <>
       <h2>{loading && 'Loading....'}</h2>

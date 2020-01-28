@@ -18,7 +18,6 @@ const StyledModal = ({ name, children }) => {
     modalContext
   )
   const classes = useStyles()
-  console.count('modal')
   const closeModal = () => {
     setError(false)
     setLoading(false)
