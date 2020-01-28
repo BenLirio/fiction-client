@@ -14,7 +14,7 @@ const rootJsx = (
   <UserContextProvider>
     <ModalContextProvider>
       <ThemeProvider theme={theme}>
-        <BrowserRouter basename="/fiction-client">
+        <BrowserRouter>
           <CssBaseline />
           <App />
         </BrowserRouter>

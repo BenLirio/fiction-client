@@ -16,8 +16,11 @@ const Header = () => {
     <>
       <AppBar className={classes.root}>
         <Toolbar>
-          <Button color="inherit" onClick={() => open('signIn')}>
+          <Button color="inherit" onClick={() => open('SignIn')}>
             Login
+          </Button>
+          <Button color="inherit" onClick={() => open('SignUp')}>
+            Create Account
           </Button>
         </Toolbar>
       </AppBar>

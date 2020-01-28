@@ -1,19 +1,15 @@
-import React, { useEffect, useContext } from 'react'
+import React from 'react'
 import Layout from './Layout/Layout'
 import Story from './views/Story'
 import Storys from './views/Storys'
-import { signIn } from './api/auth'
-import userContext from './user-context'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import NotFound from './views/NotFound'
+import Modals from './Modal/Modals'
 
 const App = () => {
-  const { setToken } = useContext(userContext)
-  useEffect(() => {
-    console.log('token changed')
-  }, [setToken])
   return (
     <Layout>
+      <Modals />
       <Switch>
         <Route path="/404">
           <NotFound />
