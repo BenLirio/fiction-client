@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0c296b09c92c4cf85d580f6ec8913d83",
+    "revision": "93b787b44097a41402452ce7d6d53103",
     "url": "/fiction-client/index.html"
   },
   {
