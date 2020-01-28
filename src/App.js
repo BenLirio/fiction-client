@@ -15,6 +15,7 @@ const App = () => {
       .then(() => {
         console.log('============= signed in =============')
       })
+      .catch(console.log)
   }, [setToken])
   return (
     <Layout>
@@ -28,7 +29,6 @@ const App = () => {
         <Route path="/stories/:id">
           <Story />
         </Route>
-        <Redirect to="/404" />
       </Switch>
     </Layout>
   )
