@@ -7,6 +7,7 @@ import NotFound from './views/NotFound'
 import Modals from './Modal/Modals'
 import { signIn } from './api/auth'
 import userContext from './user-context'
+import { CurrentStoryContextProvider } from './current-story-context'
 
 const App = () => {
   const { setToken } = useContext(userContext)
@@ -26,7 +27,9 @@ const App = () => {
           <Storys />
         </Route>
         <Route path="/stories/:id">
-          <Story />
+          <CurrentStoryContextProvider>
+            <Story />
+          </CurrentStoryContextProvider>
         </Route>
       </Switch>
     </Layout>

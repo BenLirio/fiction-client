@@ -9,6 +9,7 @@ import {
 import { create, index } from '../../api/storys'
 import userContext from '../../user-context'
 import { useHistory } from 'react-router-dom'
+import useStorysApi from '../../api/useStorysApi'
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -21,15 +22,12 @@ const useStyles = makeStyles(theme => ({
 
 const PermanentDrawer = () => {
   const { token } = useContext(userContext)
+  const storysApi = useStorysApi()
   const history = useHistory()
-  const onCreate = text => {
+  const onClick = text => {
     switch (text) {
       case 'New Story':
-        create(token)
-          .then(res => {
-            history.push('/stories/' + res.data.story._id)
-          })
-          .catch(console.error)
+        storysApi.create()
         break
       case 'Stories':
         history.push('/stories')
@@ -47,7 +45,7 @@ const PermanentDrawer = () => {
     >
       <List>
         {['New Story', 'Stories'].map(text => (
-          <ListItem onClick={() => onCreate(text)} button key={text}>
+          <ListItem onClick={() => onClick(text)} button key={text}>
             <ListItemText primary={text} className={classes.listItem} />
           </ListItem>
         ))}

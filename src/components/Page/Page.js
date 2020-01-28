@@ -14,13 +14,13 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Page = ({ story: { title, text } }) => {
+const Page = () => {
   const classes = useStyles()
   const editor = useMemo(() => withReact(createEditor()), [])
   const [value, setValue] = useState([
     {
       type: 'paragraph',
-      children: [{ text }]
+      children: [{ text: 'test' }]
     }
   ])
   const renderText = props => {

@@ -1,12 +1,41 @@
 import useAjax from './useAjax'
-import { useCallback, useReducer } from 'react'
-import storyReducer from '../reducers/storyReducer'
+import { useCallback, useReducer, useContext } from 'react'
+import storysContext from '../storys-context'
+import { useHistory } from 'react-router-dom'
+
+const url = 'storys'
+
 const useServerApi = () => {
-  const dispatch = useReducer(storyReducer)[1]
+  const history = useHistory()
+  const { dispatch } = useContext(storysContext)
   const ajax = useAjax()
+
+  const index = useCallback(async () => {
+    let res
+    try {
+      res = await ajax({ url })
+      dispatch({ type: 'received', payload: res.data.storys })
+    } catch (error) {
+      dispatch({ type: 'error' })
+    }
+  })
+  const create = useCallback(async () => {
+    let res
+    try {
+      res = await ajax({
+        url,
+        method: 'POST',
+        data: { story: { title: 'untitled', text: 'Write here...' } }
+      })
+      dispatch({ type: 'received', payload: [res.data.story] })
+      history.push('/stories/' + res.data.story._id)
+    } catch (error) {
+      dispatch({ type: 'error' })
+    }
+  })
   return {
-    index: useCallback(() => ajax({ url: 'storys' })),
-    create: useCallback(() => ajax({ url: 'storys' })),
+    index,
+    create,
     show: useCallback(id => ajax({ url: `storys/${id}` }))
   }
 }

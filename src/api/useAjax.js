@@ -6,14 +6,14 @@ import Axios from 'axios'
 const useAjax = () => {
   const { token } = useContext(userContext)
   return useCallback(
-    ({ url = '', method = 'GET' }) => {
-      console.log('object')
+    ({ url = '', method = 'GET', data = {} }) => {
       return Axios({
         url: `${apiUrl}/${url}`,
         method,
         headers: {
           Authorization: 'Bearer ' + token
-        }
+        },
+        data
       })
     },
     [token]

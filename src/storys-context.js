@@ -1,17 +1,17 @@
 import React, { useReducer } from 'react'
-import storyReducer from './reducers/storyReducer'
+import storysReducer from './reducers/storysReducer'
 
 const initialStorysState = []
 
-const storyContext = React.createContext(initialStorysState)
+const storysContext = React.createContext(initialStorysState)
 
 export const StorysContextProvider = ({ children }) => {
-  const [storys, dispatch] = useReducer(storyReducer, initialStorysState)
+  const [storys, dispatch] = useReducer(storysReducer, initialStorysState)
   return (
-    <storyContext.Provider value={{ storys, dispatch }}>
+    <storysContext.Provider value={{ storys, dispatch }}>
       {children}
-    </storyContext.Provider>
+    </storysContext.Provider>
   )
 }
 
-export default storyContext
+export default storysContext
