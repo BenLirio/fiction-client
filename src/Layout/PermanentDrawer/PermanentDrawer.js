@@ -32,7 +32,6 @@ const PermanentDrawer = () => {
           .catch(console.error)
         break
       case 'Stories':
-        index(token).then(console.log)
         history.push('/stories')
         break
       default:
