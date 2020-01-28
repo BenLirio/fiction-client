@@ -4,6 +4,7 @@ import { Slate, Editable, withReact } from 'slate-react'
 import { createEditor } from 'slate'
 import useStoryApi from '../../api/useStorysApi'
 import currentStoryContext from '../../current-story-context'
+import PageTitle from './PageTitle/PageTitle'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,39 +14,46 @@ const useStyles = makeStyles(theme => ({
     boxShadow: theme.shadows[3],
     margin: '20px auto 0',
     padding: 20
+  },
+  title: {
+    textAlign: 'center'
   }
 }))
 
 const Page = () => {
+  const classes = useStyles()
   const editor = useMemo(() => withReact(createEditor()), [])
-  const story = useContext(currentStoryContext)
+  const { text } = useContext(currentStoryContext)
   const { update } = useStoryApi()
   const [value, setValue] = useState([
     {
       type: 'paragraph',
-      children: [{ text: story.text }]
+      children: [{ text: text }]
     }
   ])
 
   useEffect(() => {
     let updateTimer = setTimeout(() => {
       const newValue = value[0].children[0].text
-      update({ title: story.title, text: newValue })
+      update({ text: newValue })
     }, 2000)
     return () => {
       clearTimeout(updateTimer)
     }
   }, [value])
   return (
-    <>
-      <TextField
-        value={story && story.title}
-        placeholder={story && story.title}
-      ></TextField>
-      <Slate editor={editor} value={value} onChange={value => setValue(value)}>
-        <Editable />
-      </Slate>
-    </>
+    <div className={classes.root}>
+      <PageTitle />
+      <div>
+        <Slate
+          editor={editor}
+          value={value}
+          onChange={value => setValue(value)}
+        >
+          <Editable />
+        </Slate>
+      </div>
+    </div>
   )
 }
 
