@@ -12,7 +12,7 @@ const Story = () => {
   return (
     <>
       <h2>{loading && 'Loading....'}</h2>
-      {story && <Page />}
+      {story && <Page story={story} />}
       <h2>{error && 'Error'}</h2>
     </>
   )
