@@ -10,12 +10,7 @@ import NotFound from './views/NotFound'
 const App = () => {
   const { setToken } = useContext(userContext)
   useEffect(() => {
-    signIn({ email: 'test@gmail.com', password: 'test' })
-      .then(({ data: { user: { token } } }) => setToken(token))
-      .then(() => {
-        console.log('============= signed in =============')
-      })
-      .catch(console.log)
+    console.log('token changed')
   }, [setToken])
   return (
     <Layout>
