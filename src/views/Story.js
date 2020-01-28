@@ -10,11 +10,11 @@ const Story = () => {
     getStory()
   }, [token])
   return (
-    <div>
+    <>
       <h2>{loading && 'Loading....'}</h2>
       {story && <Page />}
       <h2>{error && 'Error'}</h2>
-    </div>
+    </>
   )
 }
 
