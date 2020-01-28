@@ -25,7 +25,7 @@ const useAuth = () => {
       setError(false)
       signIn(credentials)
         .then(({ data }) => {
-          setToken(data.token)
+          setToken(data.user.token)
           setLoading(false)
           close()
         })
