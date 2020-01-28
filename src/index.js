@@ -9,14 +9,17 @@ import { UserContextProvider } from './user-context'
 import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import theme from './theme'
 import { BrowserRouter } from 'react-router-dom'
+import { StorysContextProvider } from './storys-context'
 
 const rootJsx = (
   <UserContextProvider>
     <ModalContextProvider>
       <ThemeProvider theme={theme}>
         <BrowserRouter basename="/fiction-client/">
-          <CssBaseline />
-          <App />
+          <StorysContextProvider>
+            <CssBaseline />
+            <App />
+          </StorysContextProvider>
         </BrowserRouter>
       </ThemeProvider>
     </ModalContextProvider>
