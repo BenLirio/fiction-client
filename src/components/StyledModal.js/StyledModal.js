@@ -14,13 +14,15 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const StyledModal = ({ name, children }) => {
-  const { current, close, loading } = useContext(modalContext)
+  const { current, close, loading, error } = useContext(modalContext)
   const classes = useStyles()
+  console.count('modal')
   return (
     <>
       <Modal open={current === name} onClose={close}>
         <div className={classes.paper}>
           <p>{loading && 'LOADING...'}</p>
+          <p>{error && '!!!!ERROR!!!!'}</p>
           {children}
         </div>
       </Modal>

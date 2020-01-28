@@ -7,9 +7,9 @@ import useAuth from '../../hooks/useAuth'
 const SignInModal = () => {
   const [email, bindEmail] = useInput('')
   const [password, bindPassword] = useInput('')
-  const { signUp } = useAuth()
+  const { signIn } = useAuth()
   const onSignInClicked = () => {
-    signUp({ email, password })
+    signIn({ email, password })
   }
   return (
     <StyledModal name="SignIn">
