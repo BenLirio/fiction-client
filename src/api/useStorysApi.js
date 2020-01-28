@@ -1,13 +1,14 @@
 import useAjax from './useAjax'
 import { useCallback, useReducer, useContext } from 'react'
 import storysContext from '../storys-context'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
 const url = 'storys'
 
 const useServerApi = () => {
   const history = useHistory()
   const { dispatch } = useContext(storysContext)
+  const { id } = useParams()
   const ajax = useAjax()
 
   const index = useCallback(async () => {
@@ -33,10 +34,22 @@ const useServerApi = () => {
       dispatch({ type: 'error' })
     }
   })
+  const update = useCallback(async ({ title, text }) => {
+    try {
+      await ajax({
+        url: `${url}/${id}`,
+        method: 'PATCH',
+        data: { story: { title, text } }
+      })
+      dispatch({ type: 'edit', payload: { title, text } })
+    } catch (error) {
+      dispatch({ type: 'error' })
+    }
+  })
   return {
     index,
     create,
-    show: useCallback(id => ajax({ url: `storys/${id}` }))
+    update
   }
 }
 export default useServerApi

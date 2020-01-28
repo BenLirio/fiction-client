@@ -7,15 +7,12 @@ import NotFound from './views/NotFound'
 import Modals from './Modal/Modals'
 import { signIn } from './api/auth'
 import userContext from './user-context'
-import { CurrentStoryContextProvider } from './current-story-context'
+import currentStoryContext, {
+  CurrentStoryContextProvider
+} from './current-story-context'
 
 const App = () => {
   const { setToken } = useContext(userContext)
-  useEffect(() => {
-    signIn({ email: 'test@test', password: 'test' }).then(res =>
-      setToken(res.data.user.token)
-    )
-  }, [])
   return (
     <Layout>
       <Modals />

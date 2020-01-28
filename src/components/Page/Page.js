@@ -1,7 +1,9 @@
-import React, { useMemo, useState } from 'react'
-import { makeStyles } from '@material-ui/core'
+import React, { useMemo, useState, useContext, useEffect } from 'react'
+import { makeStyles, TextField } from '@material-ui/core'
 import { Slate, Editable, withReact } from 'slate-react'
 import { createEditor } from 'slate'
+import useStoryApi from '../../api/useStorysApi'
+import currentStoryContext from '../../current-story-context'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,23 +17,35 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Page = () => {
-  const classes = useStyles()
   const editor = useMemo(() => withReact(createEditor()), [])
+  const story = useContext(currentStoryContext)
+  const { update } = useStoryApi()
   const [value, setValue] = useState([
     {
       type: 'paragraph',
-      children: [{ text: 'test' }]
+      children: [{ text: story.text }]
     }
   ])
-  const renderText = props => {
-    return <h3 {...props.attribute}>{props.children}</h3>
-  }
+
+  useEffect(() => {
+    let updateTimer = setTimeout(() => {
+      const newValue = value[0].children[0].text
+      update({ title: story.title, text: newValue })
+    }, 2000)
+    return () => {
+      clearTimeout(updateTimer)
+    }
+  }, [value])
   return (
-    <div className={classes.root}>
+    <>
+      <TextField
+        value={story && story.title}
+        placeholder={story && story.title}
+      ></TextField>
       <Slate editor={editor} value={value} onChange={value => setValue(value)}>
-        <Editable renderElement={renderText} />
+        <Editable />
       </Slate>
-    </div>
+    </>
   )
 }
 

@@ -7,6 +7,7 @@ const Stroys = () => {
   const { storys } = useContext(storysContext)
   const { index } = useStorysApi()
   const { token } = useContext(userContext)
+  console.log('storys', storys)
   useEffect(() => {
     index()
   }, [token])

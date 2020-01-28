@@ -8,7 +8,9 @@ const initialUserState = {
 const userContext = React.createContext(initialUserState)
 
 export const UserContextProvider = ({ children }) => {
-  const [token, setToken] = useState(null)
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem('token')) || null
+  )
 
   const setTokenCallback = useCallback(pToken => {
     setToken(pToken)

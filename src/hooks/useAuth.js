@@ -27,6 +27,7 @@ const useAuth = () => {
         .then(({ data }) => {
           setToken(data.user.token)
           setLoading(false)
+          localStorage.setItem('token', JSON.stringify(data.user.token))
           close()
         })
         .catch(() => {
