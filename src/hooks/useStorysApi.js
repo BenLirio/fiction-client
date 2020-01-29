@@ -21,7 +21,6 @@ const useServerApi = () => {
     try {
       res = await ajax({ url })
       // Successfully indexed, set the storys state
-      console.log(res)
       dispatch({ type: 'index', payload: res.data.storys })
     } catch (error) {
       // Failed to index

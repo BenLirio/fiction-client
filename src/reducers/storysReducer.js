@@ -8,7 +8,6 @@ const storysReducer = (state, action) => {
     // Index takes in an array and sets all state to the array
     // first mapping over the items and only getting data and id
     case 'index':
-      console.log('action', action)
       return payload.map(i => ({ id: i._id, data: i.data }))
     // create takes maps the object and adds it at the end of the array
     case 'create':
