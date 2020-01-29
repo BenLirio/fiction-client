@@ -1,15 +1,19 @@
 import React, { useContext } from 'react'
-import { Modal, makeStyles } from '@material-ui/core'
+import { Modal, makeStyles, Fade, Grow } from '@material-ui/core'
 import modalContext from '../../../context/modal-context'
 
 const useStyles = makeStyles(theme => ({
   paper: {
     position: 'absolute',
+    left: '50%',
+    top: '50%',
     width: 400,
+    height: 400,
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3)
+    padding: theme.spacing(2, 4, 3),
+    borderRadius: theme.shape.borderRadius,
+    transform: 'translate(-50%, -50%)'
   }
 }))
 
@@ -24,15 +28,13 @@ const StyledModal = ({ name, children }) => {
     close()
   }
   return (
-    <>
-      <Modal open={current === name} onClose={closeModal}>
-        <div className={classes.paper}>
-          <p>{loading && 'LOADING...'}</p>
-          <p>{error && '!!!!ERROR!!!!'}</p>
-          {children}
-        </div>
-      </Modal>
-    </>
+    <Modal open={current === name} onClose={closeModal}>
+      <div className={classes.paper}>
+        <p>{loading && 'LOADING...'}</p>
+        <p>{error && '!!!!ERROR!!!!'}</p>
+        {children}
+      </div>
+    </Modal>
   )
 }
 
