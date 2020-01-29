@@ -1,18 +1,13 @@
-import React, { useEffect, useContext } from 'react'
+import React from 'react'
 import Layout from './Layout/Layout'
 import Story from './views/Story'
 import Storys from './views/Storys'
 import { Route, Switch } from 'react-router-dom'
 import NotFound from './views/NotFound'
 import Modals from './Modal/Modals'
-import { signIn } from './api/auth'
-import userContext from './user-context'
-import currentStoryContext, {
-  CurrentStoryContextProvider
-} from './current-story-context'
+import { CurrentStoryContextProvider } from './current-story-context'
 
 const App = () => {
-  const { setToken } = useContext(userContext)
   return (
     <Layout>
       <Modals />

@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useContext, useEffect } from 'react'
-import { makeStyles, TextField } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
 import { Slate, Editable, withReact } from 'slate-react'
 import { createEditor } from 'slate'
 import useStoryApi from '../../api/useStorysApi'
@@ -40,7 +40,7 @@ const Page = () => {
     return () => {
       clearTimeout(updateTimer)
     }
-  }, [value])
+  }, [value, update])
   return (
     <div className={classes.root}>
       <PageTitle />

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import modalContext from '../Modal/modal-context'
 import { signIn, signUp, signOut } from '../api/auth'
 import userContext from '../user-context'

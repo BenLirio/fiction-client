@@ -1,12 +1,5 @@
-import React, { useContext, useState } from 'react'
-import {
-  AppBar,
-  Toolbar,
-  Button,
-  makeStyles,
-  Typography
-} from '@material-ui/core'
-import modalContext from '../../Modal/modal-context'
+import React, { useContext } from 'react'
+import { AppBar, Toolbar, makeStyles, Typography } from '@material-ui/core'
 import userContext from '../../user-context'
 import AuthHeader from './AuthHeader/AuthHeader'
 import GuestHeader from './GuestHeader/GuestHeader'

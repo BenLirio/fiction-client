@@ -8,12 +8,12 @@ import React, {
 import currentStoryContext from '../../../current-story-context'
 import { Slate, Editable, withReact } from 'slate-react'
 import { createEditor } from 'slate'
-import useStoryApi from '../../../api/useStorysApi'
+import useStorysApi from '../../../api/useStorysApi'
 
 const PageTitle = () => {
   const editor = useMemo(() => withReact(createEditor()), [])
   const { title } = useContext(currentStoryContext)
-  const { update } = useStoryApi()
+  const { update } = useStorysApi()
   const [value, setValue] = useState([
     {
       type: 'paragraph',
@@ -24,9 +24,10 @@ const PageTitle = () => {
       ]
     }
   ])
-  const Title = useCallback(props => (
-    <h1 {...props.attributes}>{props.children}</h1>
-  ))
+  const Title = useCallback(
+    props => <h1 {...props.attributes}>{props.children}</h1>,
+    []
+  )
   useEffect(() => {
     let updateTimer = setTimeout(() => {
       const newValue = value[0].children[0].text
@@ -35,7 +36,7 @@ const PageTitle = () => {
     return () => {
       clearTimeout(updateTimer)
     }
-  }, [value])
+  }, [value, update])
   return (
     <Slate editor={editor} value={value} onChange={value => setValue(value)}>
       <Editable renderElement={Title} />

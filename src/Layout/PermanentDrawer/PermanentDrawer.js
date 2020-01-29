@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import {
   Drawer,
   List,
@@ -6,8 +6,6 @@ import {
   ListItemText,
   makeStyles
 } from '@material-ui/core'
-import { create, index } from '../../api/storys'
-import userContext from '../../user-context'
 import { useHistory } from 'react-router-dom'
 import useStorysApi from '../../api/useStorysApi'
 
@@ -22,7 +20,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const PermanentDrawer = () => {
-  const { token } = useContext(userContext)
   const storysApi = useStorysApi()
   const history = useHistory()
   const onClick = text => {

@@ -1,7 +1,6 @@
-import React, { createContext, useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import storysContext from './storys-context'
 import { useParams } from 'react-router-dom'
-import userContext from './user-context'
 
 const currentStoryContext = React.createContext({})
 
@@ -10,8 +9,8 @@ export const CurrentStoryContextProvider = ({ children }) => {
   const { id } = useParams()
   const [story, setStory] = useState(null)
   useEffect(() => {
-    setStory(storys.find(story => story._id == id) || null)
-  }, [storys])
+    setStory(storys.find(story => story._id === id) || null)
+  }, [storys, id])
   return (
     <currentStoryContext.Provider value={story}>
       {children}

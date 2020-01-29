@@ -1,7 +1,6 @@
 const storysReducer = (state, action) => {
   switch (action.type) {
     case 'edit':
-      console.log('action', action)
       return (
         state &&
         state.map(story => {

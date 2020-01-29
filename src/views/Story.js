@@ -10,7 +10,7 @@ const Story = () => {
   const { index } = useStoryApi()
   useEffect(() => {
     index()
-  }, [token])
+  }, [token, index])
   if (story) {
     return <Page />
   }
