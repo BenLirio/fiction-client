@@ -1,19 +1,16 @@
 import React, { useContext, useEffect } from 'react'
 import useStorysApi from '../hooks/useStorysApi'
-import userContext from '../context/user-context'
 import storysContext from '../context/storys-context'
 
 const Stroys = () => {
-  const { storys } = useContext(storysContext)
-  const { index } = useStorysApi()
-  const { token } = useContext(userContext)
+  // Reference all of the stories here, starts as [] but
+  // once index happens the array fills up
+  const storys = useContext(storysContext)
+  const { index, loading, error } = useStorysApi()
+
   useEffect(() => {
     index()
-  }, [token, index])
-  if (storys) {
-    return <h3>Stories</h3>
-  }
-  return <h2>No stories</h2>
+  }, [index])
 }
 
 export default Stroys
