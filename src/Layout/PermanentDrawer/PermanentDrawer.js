@@ -17,7 +17,8 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: theme.drawerWidth
-  }
+  },
+  toolbar: theme.mixins.toolbar
 }))
 
 const PermanentDrawer = () => {
@@ -43,6 +44,7 @@ const PermanentDrawer = () => {
       className={classes.drawer}
       classes={{ paper: classes.drawerPaper }}
     >
+      <div className={classes.toolbar} />
       <List>
         {['New Story', 'Stories'].map(text => (
           <ListItem onClick={() => onClick(text)} button key={text}>

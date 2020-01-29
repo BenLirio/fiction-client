@@ -1,11 +1,13 @@
 import React, { useContext } from 'react'
 import modalContext from '../Modal/modal-context'
-import { signIn, signUp } from '../api/auth'
+import { signIn, signUp, signOut } from '../api/auth'
 import userContext from '../user-context'
+import { useHistory } from 'react-router-dom'
 
 const useAuth = () => {
   const { setLoading, close, setError } = useContext(modalContext)
   const { token, setToken } = useContext(userContext)
+  const history = useHistory()
   return {
     signUp: credentials => {
       setLoading(true)
@@ -29,6 +31,21 @@ const useAuth = () => {
           setLoading(false)
           localStorage.setItem('token', JSON.stringify(data.user.token))
           close()
+        })
+        .catch(() => {
+          setLoading(false)
+          setError(true)
+        })
+    },
+    signOut: () => {
+      setLoading(true)
+      setError(false)
+      signOut(token)
+        .then(() => {
+          setToken(null)
+          setLoading(false)
+          localStorage.removeItem('token')
+          history.push('/')
         })
         .catch(() => {
           setLoading(false)

@@ -1,31 +1,45 @@
-import React, { useContext } from 'react'
-import { AppBar, Toolbar, Button, makeStyles } from '@material-ui/core'
+import React, { useContext, useState } from 'react'
+import {
+  AppBar,
+  Toolbar,
+  Button,
+  makeStyles,
+  Typography
+} from '@material-ui/core'
 import modalContext from '../../Modal/modal-context'
+import userContext from '../../user-context'
+import AuthHeader from './AuthHeader/AuthHeader'
+import GuestHeader from './GuestHeader/GuestHeader'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: `calc(100% - ${theme.drawerWidth}px)`,
-    marginLeft: theme.drawerWidth
+    display: 'flex'
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1
+  },
+  title: {
+    flexGrow: 1
   }
 }))
 
 const Header = () => {
-  const { open } = useContext(modalContext)
+  const { token } = useContext(userContext)
+
   const classes = useStyles()
+
   return (
-    <>
-      <AppBar className={classes.root}>
+    <div className={classes.root}>
+      <AppBar className={classes.appBar}>
         <Toolbar>
-          <Button color="inherit" onClick={() => open('SignIn')}>
-            Login
-          </Button>
-          <Button color="inherit" onClick={() => open('SignUp')}>
-            Create Account
-          </Button>
+          <Typography variant="h5" className={classes.title}>
+            Fiction Writer
+          </Typography>
+          {token ? <AuthHeader /> : <GuestHeader />}
         </Toolbar>
       </AppBar>
       <Toolbar />
-    </>
+    </div>
   )
 }
 

@@ -28,12 +28,12 @@ export const signIn = credentials => {
   })
 }
 
-export const signOut = user => {
+export const signOut = token => {
   return axios({
     url: apiUrl + '/sign-out',
     method: 'DELETE',
     headers: {
-      Authorization: `Token token=${user.token}`
+      Authorization: `Bearer ${token}`
     }
   })
 }
