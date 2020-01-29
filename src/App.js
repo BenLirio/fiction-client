@@ -4,8 +4,8 @@ import Story from './views/Story'
 import Storys from './views/Storys'
 import { Route, Switch } from 'react-router-dom'
 import NotFound from './views/NotFound'
-import Modals from './Modal/Modals'
-import { CurrentStoryContextProvider } from './current-story-context'
+import Modals from './components/Modal/Modals'
+import { CurrentStoryContextProvider } from './context/current-story-context'
 
 const App = () => {
   return (

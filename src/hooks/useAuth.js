@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import modalContext from '../Modal/modal-context'
+import modalContext from '../context/modal-context'
 import { signIn, signUp, signOut } from '../api/auth'
-import userContext from '../user-context'
+import userContext from '../context/user-context'
 import { useHistory } from 'react-router-dom'
 
 const useAuth = () => {

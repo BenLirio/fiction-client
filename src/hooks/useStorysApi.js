@@ -1,6 +1,6 @@
 import useAjax from './useAjax'
 import { useCallback, useContext } from 'react'
-import storysContext from '../storys-context'
+import storysContext from '../context/storys-context'
 import { useHistory, useParams } from 'react-router-dom'
 
 const url = 'storys'

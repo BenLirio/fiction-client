@@ -1,8 +1,8 @@
 import React from 'react'
-import StyledModal from '../../components/StyledModal.js/StyledModal'
+import StyledModal from '../StyledModal/StyledModal'
 import { Button, TextField } from '@material-ui/core'
-import useInput from '../../hooks/useInput'
-import useAuth from '../../hooks/useAuth'
+import useInput from '../../../hooks/useInput'
+import useAuth from '../../../hooks/useAuth'
 
 const SignUpModal = () => {
   const { signUp } = useAuth()

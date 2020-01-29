@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
-import useStorysApi from '../api/useStorysApi'
-import userContext from '../user-context'
-import storysContext from '../storys-context'
+import useStorysApi from '../hooks/useStorysApi'
+import userContext from '../context/user-context'
+import storysContext from '../context/storys-context'
 
 const Stroys = () => {
   const { storys } = useContext(storysContext)

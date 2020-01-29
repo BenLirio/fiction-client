@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppBar, Toolbar, makeStyles, Typography } from '@material-ui/core'
-import userContext from '../../user-context'
+import userContext from '../../context/user-context'
 import AuthHeader from './AuthHeader/AuthHeader'
 import GuestHeader from './GuestHeader/GuestHeader'
 

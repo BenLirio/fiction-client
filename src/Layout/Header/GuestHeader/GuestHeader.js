@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Button } from '@material-ui/core'
-import modalContext from '../../../Modal/modal-context'
+import modalContext from '../../../context/modal-context'
 
 const GuestHeader = () => {
   const { open } = useContext(modalContext)

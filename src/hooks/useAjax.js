@@ -1,5 +1,5 @@
 import { useContext, useCallback } from 'react'
-import userContext from '../user-context'
+import userContext from '../context/user-context'
 import apiUrl from '../apiConfig'
 import Axios from 'axios'
 

@@ -7,7 +7,7 @@ import {
   makeStyles
 } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
-import useStorysApi from '../../api/useStorysApi'
+import useStorysApi from '../../hooks/useStorysApi'
 
 const useStyles = makeStyles(theme => ({
   drawer: {

@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
-import { ModalContextProvider } from './Modal/modal-context'
-import { UserContextProvider } from './user-context'
+import { ModalContextProvider } from './context/modal-context'
+import { UserContextProvider } from './context/user-context'
 import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import theme from './theme'
 import { BrowserRouter } from 'react-router-dom'
-import { StorysContextProvider } from './storys-context'
+import { StorysContextProvider } from './context/storys-context'
 
 const rootJsx = (
   <UserContextProvider>

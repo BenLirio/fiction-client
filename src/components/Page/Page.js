@@ -2,8 +2,8 @@ import React, { useMemo, useState, useContext, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core'
 import { Slate, Editable, withReact } from 'slate-react'
 import { createEditor } from 'slate'
-import useStoryApi from '../../api/useStorysApi'
-import currentStoryContext from '../../current-story-context'
+import useStorysApi from '../../hooks/useStorysApi'
+import currentStoryContext from '../../context/current-story-context'
 import PageTitle from './PageTitle/PageTitle'
 
 const useStyles = makeStyles(theme => ({
@@ -24,7 +24,7 @@ const Page = () => {
   const classes = useStyles()
   const editor = useMemo(() => withReact(createEditor()), [])
   const { text } = useContext(currentStoryContext)
-  const { update } = useStoryApi()
+  const { update } = useStorysApi()
   const [value, setValue] = useState([
     {
       type: 'paragraph',

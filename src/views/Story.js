@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
-import currentStoryContext from '../current-story-context'
-import useStoryApi from '../api/useStorysApi'
-import userContext from '../user-context'
+import currentStoryContext from '../context/current-story-context'
+import useStoryApi from '../hooks/useStorysApi'
+import userContext from '../context/user-context'
 import Page from '../components/Page/Page'
 
 const Story = () => {

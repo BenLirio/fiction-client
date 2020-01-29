@@ -5,10 +5,10 @@ import React, {
   useCallback,
   useEffect
 } from 'react'
-import currentStoryContext from '../../../current-story-context'
+import currentStoryContext from '../../../context/current-story-context'
 import { Slate, Editable, withReact } from 'slate-react'
 import { createEditor } from 'slate'
-import useStorysApi from '../../../api/useStorysApi'
+import useStorysApi from '../../../hooks/useStorysApi'
 
 const PageTitle = () => {
   const editor = useMemo(() => withReact(createEditor()), [])

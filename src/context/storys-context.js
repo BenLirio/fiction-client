@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'
-import storysReducer from './reducers/storysReducer'
+import storysReducer from '../reducers/storysReducer'
 
 const initialStorysState = []
 
