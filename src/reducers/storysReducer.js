@@ -1,22 +1,26 @@
-const storysReducer = (state, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
-    case 'edit':
-      return (
-        state &&
-        state.map(story => {
-          if (story._id === action.id) {
-            story.text = action.text
-          }
-          return story
-        })
-      )
-    case 'received':
-      return [
-        ...state.filter(s => !action.payload.map(s => s._id).includes(s._id)),
-        ...action.payload
-      ]
-    case 'error':
-      return state
+    case 'index':
+      return action.payload.map(i => ({ id: i._id, data: i.data }))
+    case 'show':
+      return null
+    case 'create':
+      const payload = action.payload
+      const created = {
+        id: payload._id,
+        data: payload.data
+      }
+      return [...state, created]
+    case 'update':
+      const id = action.id
+      const payload = action
+      const rest = state.filter(i => i.id !== id)
+      const found = state.find(i => i.id === id)
+      found.data = action.payload
+      return [...rest, found]
+    case 'destroy':
+      const id = action.id
+      return state.filter(i => i.id !== id)
     default:
       throw new Error()
   }

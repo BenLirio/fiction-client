@@ -4,7 +4,6 @@ import { Slate, Editable, withReact } from 'slate-react'
 import { createEditor } from 'slate'
 import useStorysApi from '../../hooks/useStorysApi'
 import currentStoryContext from '../../context/current-story-context'
-import PageTitle from './PageTitle/PageTitle'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,9 +13,6 @@ const useStyles = makeStyles(theme => ({
     boxShadow: theme.shadows[3],
     margin: '20px auto 0',
     padding: 20
-  },
-  title: {
-    textAlign: 'center'
   }
 }))
 
@@ -43,7 +39,6 @@ const Page = () => {
   }, [value, update])
   return (
     <div className={classes.root}>
-      <PageTitle />
       <div>
         <Slate
           editor={editor}
