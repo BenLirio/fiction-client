@@ -5,9 +5,9 @@ import userContext from '../context/user-context'
 
 const url = 'storys'
 
-const useStorysApi = () => {
+const useStorysApi = (options = {}) => {
   // Let user have access to the status
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(options.loading)
   const [error, setError] = useState(false)
   // Allow server api to dispatch to the context
   const dispatch = useContext(storysContextDispatchProvider)
@@ -114,7 +114,7 @@ const useStorysApi = () => {
           method: 'DELETE'
         })
         // Successfully Deleted a story
-        dispatch({ type: 'destroy', id })
+        dispatch({ type: 'destroy', payload: id })
       } catch (error) {
         // Failed to delete a story
         setError(true)

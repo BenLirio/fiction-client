@@ -35,7 +35,7 @@ const storysReducer = (state, action) => {
       return [...rest, found]
     }
     case 'destroy': {
-      id = payload._id
+      id = payload
       return state.filter(i => i.id !== id)
     }
     default: {

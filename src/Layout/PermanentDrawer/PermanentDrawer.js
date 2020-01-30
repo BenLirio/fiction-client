@@ -40,7 +40,7 @@ const PermanentDrawer = () => {
   return (
     <Drawer
       variant="persistent"
-      open={token}
+      open={!!token}
       className={classes.drawer}
       classes={{ paper: classes.drawerPaper }}
     >
