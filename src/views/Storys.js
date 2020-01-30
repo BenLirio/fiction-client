@@ -21,12 +21,6 @@ const Stroys = () => {
     index()
   }, [index])
 
-  // When the user click create a story
-  const onCreateStory = useCallback(() => {
-    const name = generator()
-    create(name)
-  }, [])
-
   if (indexError) {
     // Failed to index the stories
     // most likely signed out or connection issue

@@ -4,11 +4,16 @@ import {
   List,
   ListItem,
   ListItemText,
-  makeStyles
+  makeStyles,
+  ListItemIcon,
+  Divider
 } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import useStorysApi from '../../hooks/useStorysApi'
 import userContext from '../../context/user-context'
+import AddBoxIcon from '@material-ui/icons/AddBox'
+import ListIcon from '@material-ui/icons/List'
+import useRandomNameGenerator from '../../hooks/useRandomName'
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -22,14 +27,16 @@ const useStyles = makeStyles(theme => ({
 
 const PermanentDrawer = () => {
   const { token } = useContext(userContext)
-  const storysApi = useStorysApi()
+  const { create } = useStorysApi()
   const history = useHistory()
+  const generator = useRandomNameGenerator()
   const onClick = text => {
     switch (text) {
       case 'New Story':
-        storysApi.create()
+        const name = generator()
+        create(name)
         break
-      case 'Stories':
+      case 'My Stories':
         history.push('/stories')
         break
       default:
@@ -46,14 +53,30 @@ const PermanentDrawer = () => {
     >
       <div className={classes.toolbar} />
       <List>
-        {['New Story', 'Stories'].map(text => (
-          <ListItem onClick={() => onClick(text)} button key={text}>
-            <ListItemText primary={text} className={classes.listItem} />
-          </ListItem>
-        ))}
+        <ListItem button onClick={() => onClick('New Story')}>
+          <ListItemIcon>
+            <AddBoxIcon />
+          </ListItemIcon>
+          <ListItemText primary="New Story" className={classes.listItem} />
+        </ListItem>
+        <Divider />
+        <ListItem button onClick={() => onClick('My Stories')}>
+          <ListItemIcon>
+            <ListIcon />
+          </ListItemIcon>
+          <ListItemText primary="My Stories" className={classes.listItem} />
+        </ListItem>
       </List>
     </Drawer>
   )
 }
 
 export default PermanentDrawer
+
+// {
+//   ;['New Story', 'Stories'].map(text => (
+//     <ListItem onClick={() => onClick(text)} button key={text}>
+//       <ListItemText primary={text} className={classes.listItem} />
+//     </ListItem>
+//   ))
+// }

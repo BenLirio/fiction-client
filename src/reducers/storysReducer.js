@@ -7,8 +7,16 @@ const storysReducer = (state, action) => {
   switch (action.type) {
     // Index takes in an array and sets all state to the array
     // first mapping over the items and only getting data and id
+    // When indexing all sort by date
     case 'index': {
-      return payload.map(i => ({ id: i._id, text: JSON.parse(i.text) }))
+      console.log(payload[0].updatedAt)
+      return payload
+        .map(i => ({
+          id: i._id,
+          text: JSON.parse(i.text),
+          updatedAt: i.updatedAt
+        }))
+        .sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
     }
     case 'show': {
       id = payload._id
@@ -16,15 +24,20 @@ const storysReducer = (state, action) => {
       const found = state.find(i => i.id === id) || {}
       found.text = JSON.parse(payload.text)
       found.id = payload._id
-      return [...rest, found]
+      return [...rest, found].sort(
+        (a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt)
+      )
     }
     // create takes maps the object and adds it at the end of the array
     case 'create': {
       const created = {
         id: payload._id,
-        text: JSON.parse(payload.text)
+        text: JSON.parse(payload.text),
+        updatedAt: payload.updatedAt
       }
-      return [...state, created]
+      return [...state, created].sort(
+        (a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt)
+      )
     }
     // Update takes in an id and data
     case 'update': {
