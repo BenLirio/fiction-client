@@ -3,11 +3,9 @@ import useStorysApi from '../hooks/useStorysApi'
 import storysContext from '../context/storys-context'
 import { Button } from '@material-ui/core'
 import useRandomNameGenerator from '../hooks/useRandomName'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Stroys = () => {
-  // Redirect to home if there is an error
-  const history = useHistory()
   // Reference all of the stories here, starts as [] but
   // once index happens the array fills up
   const storys = useContext(storysContext)
@@ -30,8 +28,7 @@ const Stroys = () => {
   if (error) {
     // Failed to index the stories
     // most likely signed out or connection issue
-    history.push('/')
-    return null
+    return <p>Error</p>
   } else if (loading) {
     // stories are loading should only briefly show,
     // Show some sort of indicator to the user
