@@ -8,19 +8,19 @@ import { ModalContextProvider } from './context/modal-context'
 import { UserContextProvider } from './context/user-context'
 import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import theme from './theme'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, HashRouter } from 'react-router-dom'
 import { StorysContextProvider } from './context/storys-context'
 console.log(process)
 const rootJsx = (
   <UserContextProvider>
     <ModalContextProvider>
       <ThemeProvider theme={theme}>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <HashRouter>
           <StorysContextProvider>
             <CssBaseline />
             <App />
           </StorysContextProvider>
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     </ModalContextProvider>
   </UserContextProvider>
