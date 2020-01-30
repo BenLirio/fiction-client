@@ -6,7 +6,6 @@ const usePageState = () => {
   const [value, setValue] = useState(story.text)
   useEffect(() => {
     const updateTimer = setTimeout(() => {
-      console.log('value', value)
       update(value)
     }, 1000)
     return () => {
