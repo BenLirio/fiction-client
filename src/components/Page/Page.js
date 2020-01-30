@@ -1,4 +1,10 @@
-import React, { useMemo, useState, useContext, useEffect } from 'react'
+import React, {
+  useMemo,
+  useState,
+  useContext,
+  useEffect,
+  useCallback
+} from 'react'
 import { makeStyles } from '@material-ui/core'
 import { Slate, Editable, withReact } from 'slate-react'
 import { createEditor, Transforms, Text } from 'slate'
@@ -24,6 +30,36 @@ const Page = () => {
   const [value, setValue] = usePageState()
   const renderElement = useCustomElements()
   const renderLeaf = useCustomLeaf()
+  const [verbs, setVerbs] = useState(['go', 'run'])
+
+  const search = 'the'
+  const decorate = useCallback(
+    ([node, path]) => {
+      const ranges = []
+
+      if (search && Text.isText(node)) {
+        const { text } = node
+        const parts = text.split(search)
+        let offset = 0
+
+        parts.forEach((part, i) => {
+          if (i !== 0) {
+            ranges.push({
+              anchor: { path, offset: offset - search.length },
+              focus: { path, offset },
+              color: '#921'
+            })
+          }
+
+          offset = offset + part.length + search.length
+        })
+      }
+
+      return ranges
+    },
+    [search]
+  )
+
   return (
     <div className={classes.root}>
       <div>
@@ -31,6 +67,7 @@ const Page = () => {
           <Editable
             renderElement={renderElement}
             renderLeaf={renderLeaf}
+            decorate={decorate}
             onKeyDown={e => {
               if (e.key === '&') {
                 e.preventDefault()
