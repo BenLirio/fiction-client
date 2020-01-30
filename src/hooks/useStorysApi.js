@@ -73,7 +73,7 @@ const useStorysApi = (options = {}) => {
         })
         // Created story
         dispatch({ type: 'create', payload: res.data.story })
-        history.push('stories/' + res.data.story._id)
+        history.push('/stories/' + res.data.story._id)
       } catch (error) {
         // Failed to create story
         setError(true)

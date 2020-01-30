@@ -1,82 +1,68 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
   Drawer,
   List,
-  ListItem,
-  ListItemText,
   makeStyles,
-  ListItemIcon,
-  Divider
+  Divider,
+  IconButton
 } from '@material-ui/core'
-import { useHistory } from 'react-router-dom'
-import useStorysApi from '../../hooks/useStorysApi'
 import userContext from '../../context/user-context'
-import AddBoxIcon from '@material-ui/icons/AddBox'
-import ListIcon from '@material-ui/icons/List'
-import useRandomNameGenerator from '../../hooks/useRandomName'
+import NewStory from './NewStory'
+import StoryList from './StoryList'
+import useStorysApi from '../../hooks/useStorysApi'
+import DrawerContext from '../../context/drawer-context'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 
 const useStyles = makeStyles(theme => ({
   drawer: {
     width: theme.drawerWidth
   },
+  nested: {
+    paddingLeft: theme.spacing(4)
+  },
   drawerPaper: {
     width: theme.drawerWidth
   },
-  toolbar: theme.mixins.toolbar
+  toolbar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: theme.spacing(0, 1),
+    ...theme.mixins.toolbar
+  }
 }))
 
 const PermanentDrawer = () => {
-  const { token } = useContext(userContext)
-  const { create } = useStorysApi()
-  const history = useHistory()
-  const generator = useRandomNameGenerator()
-  const onClick = text => {
-    switch (text) {
-      case 'New Story':
-        const name = generator()
-        create(name)
-        break
-      case 'My Stories':
-        history.push('/stories')
-        break
-      default:
-        throw new Error()
-    }
-  }
+  const { index } = useStorysApi()
+  const { drawerOpen, closeDrawer } = useContext(DrawerContext)
+  // Indexing stories so that it gives my menu bar a chance to load them
+  // before the user presses the button.
+  useEffect(() => {
+    index()
+  }, [])
+
   const classes = useStyles()
   return (
     <Drawer
       variant="persistent"
-      open={!!token}
+      open={drawerOpen}
       className={classes.drawer}
       classes={{ paper: classes.drawerPaper }}
     >
-      <div className={classes.toolbar} />
+      <div className={classes.toolbar}>
+        <IconButton onClick={closeDrawer}>
+          <ChevronLeftIcon />
+        </IconButton>
+      </div>
+      <Divider />
       <List>
-        <ListItem button onClick={() => onClick('New Story')}>
-          <ListItemIcon>
-            <AddBoxIcon />
-          </ListItemIcon>
-          <ListItemText primary="New Story" className={classes.listItem} />
-        </ListItem>
+        <NewStory />
         <Divider />
-        <ListItem button onClick={() => onClick('My Stories')}>
-          <ListItemIcon>
-            <ListIcon />
-          </ListItemIcon>
-          <ListItemText primary="My Stories" className={classes.listItem} />
-        </ListItem>
+        <StoryList />
       </List>
     </Drawer>
   )
 }
 
 export default PermanentDrawer
-
-// {
-//   ;['New Story', 'Stories'].map(text => (
-//     <ListItem onClick={() => onClick(text)} button key={text}>
-//       <ListItemText primary={text} className={classes.listItem} />
-//     </ListItem>
-//   ))
-// }

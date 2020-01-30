@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react'
-import { makeStyles } from '@material-ui/core'
+import React, { useMemo, useEffect } from 'react'
+import { makeStyles, Fade, Slide } from '@material-ui/core'
 import { Slate, Editable, withReact } from 'slate-react'
 import { createEditor } from 'slate'
 import usePageState from './usePageState'
@@ -8,6 +8,8 @@ import useCustomLeaf from './useCustomLeaf'
 import usePageDoctorate from './usePageDoctorate'
 import usePageEvents from './usePageEvents'
 import withLayout from './withLayout'
+import useAjax from '../../hooks/useAjax'
+import Axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,20 +29,37 @@ const Page = () => {
   const renderLeaf = useCustomLeaf()
   const decorate = usePageDoctorate()
   const onEvents = usePageEvents()
+  const ajax = useAjax()
+  useEffect(() => {
+    const url = 'https://transformer.huggingface.co/autocomplete/gpt2/medium'
+    const options = {
+      context: 'context',
+      model_size: 'gpt2/xl',
+      top_p: 0.9,
+      temperature: 1,
+      max_time: 5
+    }
+    // Axios.post(
+    //   'https://transformer.huggingface.co/autocomplete/gpt2/medium',
+    //   options
+    // ).then(console.log)
+  }, [])
   return (
-    <div className={classes.root}>
-      <div>
-        <Slate editor={editor} value={value} onChange={setValue}>
-          <Editable
-            placeholder={'Title...'}
-            renderElement={renderElement}
-            renderLeaf={renderLeaf}
-            decorate={decorate}
-            onKeyDown={event => onEvents(event, editor)}
-          />
-        </Slate>
+    <Fade in={true} direction="up">
+      <div className={classes.root}>
+        <div>
+          <Slate editor={editor} value={value} onChange={setValue}>
+            <Editable
+              placeholder={'Title...'}
+              renderElement={renderElement}
+              renderLeaf={renderLeaf}
+              decorate={decorate}
+              onKeyDown={event => onEvents(event, editor)}
+            />
+          </Slate>
+        </div>
       </div>
-    </div>
+    </Fade>
   )
 }
 

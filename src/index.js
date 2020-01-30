@@ -10,6 +10,7 @@ import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import theme from './theme'
 import { BrowserRouter, HashRouter } from 'react-router-dom'
 import { StorysContextProvider } from './context/storys-context'
+import { DrawerContextProvider } from './context/drawer-context'
 console.log(process)
 const rootJsx = (
   <UserContextProvider>
@@ -17,8 +18,10 @@ const rootJsx = (
       <ThemeProvider theme={theme}>
         <HashRouter>
           <StorysContextProvider>
-            <CssBaseline />
-            <App />
+            <DrawerContextProvider>
+              <CssBaseline />
+              <App />
+            </DrawerContextProvider>
           </StorysContextProvider>
         </HashRouter>
       </ThemeProvider>
