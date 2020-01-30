@@ -1,10 +1,31 @@
 import React from 'react'
 import StyledModal from '../StyledModal/StyledModal'
-import { Button, TextField } from '@material-ui/core'
+import {
+  Button,
+  TextField,
+  createStyles,
+  FormControl,
+  makeStyles,
+  Typography,
+  FormLabel,
+  Checkbox,
+  FormControlLabel
+} from '@material-ui/core'
 import useInput from '../../../hooks/useInput'
 import useAuth from '../../../hooks/useAuth'
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'grid',
+    gridTemplateRows: '80px 1fr 1fr 1fr 80px',
+    alignItems: 'center',
+    gridGap: '20px',
+    gridTemplateColumns: '300px'
+  }
+}))
+
 const SignUpModal = () => {
+  const classes = useStyles()
   const { signUp } = useAuth()
   const [email, bindEmail] = useInput('')
   const [password, bindPassword] = useInput('')
@@ -14,15 +35,26 @@ const SignUpModal = () => {
   }
   return (
     <StyledModal name="SignUp">
-      <form>
-        <TextField label="email" {...bindEmail} />
-        <TextField label="password" {...bindPassword} />
+      <FormControl required error={false} className={classes.root}>
+        <Typography variant="h4">Sign Up</Typography>
+        <TextField label="Email" {...bindEmail} autoFocus />
+        <TextField type="password" label="Password" {...bindPassword} />
         <TextField
-          label="password confirmation"
+          type="password"
+          label="Confirm"
           {...bindPasswordConfirmation}
         />
-        <Button onClick={onSignUpClicked}>Login</Button>
-      </form>
+        <div>
+          <FormControlLabel
+            control={<Checkbox />}
+            label="This is not my real email"
+          />
+        </div>
+        <Button onClick={onSignUpClicked} variant="contained" color="primary">
+          Login
+        </Button>
+        <FormLabel>Label</FormLabel>
+      </FormControl>
     </StyledModal>
   )
 }

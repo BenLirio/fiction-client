@@ -1,6 +1,6 @@
 import React from 'react'
 import StyledModal from '../StyledModal/StyledModal'
-import { Button, TextField } from '@material-ui/core'
+import { Button, TextField, FormControl, Fade } from '@material-ui/core'
 import useInput from '../../../hooks/useInput'
 import useAuth from '../../../hooks/useAuth'
 
@@ -13,11 +13,9 @@ const SignInModal = () => {
   }
   return (
     <StyledModal name="SignIn">
-      <form>
-        <TextField label="email" {...bindEmail} />
-        <TextField label="password" {...bindPassword} />
-        <Button onClick={onSignInClicked}>Login</Button>
-      </form>
+      <TextField type="email" label="Email" {...bindEmail} autoFocus />
+      <TextField type="password" label="Password" {...bindPassword} />
+      <Button onClick={onSignInClicked}>Login</Button>
     </StyledModal>
   )
 }
