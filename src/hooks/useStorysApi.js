@@ -2,10 +2,15 @@ import useAjax from './useAjax'
 import { useCallback, useContext, useState } from 'react'
 import { storysContextDispatchProvider } from '../context/storys-context'
 import userContext from '../context/user-context'
+import { useHistory } from 'react-router-dom'
 
 const url = 'storys'
 
 const useStorysApi = (options = {}) => {
+  // SHOULD NOT KNOW HISTORY, I JUST HAVE NO OTHER WAY TO
+  // SHOW NEW STORY DIRECTLY AFTER CREATED
+  // In the future I should accept callbacks
+  const history = useHistory()
   // Let user have access to the status
   const [loading, setLoading] = useState(options.loading)
   const [error, setError] = useState(false)
@@ -68,6 +73,7 @@ const useStorysApi = (options = {}) => {
         })
         // Created story
         dispatch({ type: 'create', payload: res.data.story })
+        history.push('stories/' + res.data.story._id)
       } catch (error) {
         // Failed to create story
         setError(true)
