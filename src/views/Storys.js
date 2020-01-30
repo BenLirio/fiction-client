@@ -41,7 +41,6 @@ const Stroys = () => {
         <Button onClick={onCreateStory}>Create story</Button>
         <ul>
           {storys.map(story => {
-            // console.log('story', story)
             return (
               <li key={story.id}>
                 <Link to={`stories/${story.id}`}>

@@ -32,7 +32,6 @@ const storysReducer = (state, action) => {
       const rest = state.filter(i => i.id !== id)
       const found = state.find(i => i.id === id)
       found.text = JSON.parse(payload.text)
-      console.log('found', found)
       return [...rest, found]
     }
     case 'destroy': {
@@ -40,7 +39,6 @@ const storysReducer = (state, action) => {
       return state.filter(i => i.id !== id)
     }
     default: {
-      console.error(action)
       throw new Error()
     }
   }

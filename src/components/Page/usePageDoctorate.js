@@ -28,7 +28,6 @@ const usePageDoctorate = () => {
           let offset = 0
 
           parts.forEach((part, i) => {
-            console.count('ib')
             if (i !== 0) {
               ranges.push({
                 anchor: { path, offset: offset - search[0].length },

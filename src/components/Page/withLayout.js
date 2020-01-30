@@ -16,7 +16,6 @@ const withLayout = editor => {
         }
       }
     }
-    console.log('node', node)
     return normalizeNode([node, path])
   }
 
