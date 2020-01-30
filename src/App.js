@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom'
 import NotFound from './views/NotFound'
 import Modals from './components/Modal/Modals'
 import { CurrentStoryContextProvider } from './context/current-story-context'
+import Profile from './views/Profile'
 
 const App = () => {
   return (
@@ -22,6 +23,9 @@ const App = () => {
           <CurrentStoryContextProvider>
             <Story />
           </CurrentStoryContextProvider>
+        </Route>
+        <Route path="/profile">
+          <Profile />
         </Route>
       </Switch>
     </Layout>

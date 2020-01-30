@@ -12,11 +12,24 @@ import StoryList from './StoryList'
 import useStorysApi from '../../hooks/useStorysApi'
 import DrawerContext from '../../context/drawer-context'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
+import Profile from './ProfileItem'
+import Settings from './Settings'
+import clsx from 'clsx'
 
 const useStyles = makeStyles(theme => ({
   drawer: {
-    width: theme.drawerWidth
+    width: 0,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    })
+  },
+  drawerOpen: {
+    width: theme.drawerWidth,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   nested: {
     paddingLeft: theme.spacing(4)
@@ -47,7 +60,7 @@ const PermanentDrawer = () => {
     <Drawer
       variant="persistent"
       open={drawerOpen}
-      className={classes.drawer}
+      className={clsx(classes.drawer, drawerOpen && classes.drawerOpen)}
       classes={{ paper: classes.drawerPaper }}
     >
       <div className={classes.toolbar}>
@@ -58,8 +71,10 @@ const PermanentDrawer = () => {
       <Divider />
       <List>
         <NewStory />
-        <Divider />
         <StoryList />
+        <Divider />
+        <Profile />
+        <Settings />
       </List>
     </Drawer>
   )
