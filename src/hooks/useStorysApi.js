@@ -1,6 +1,7 @@
 import useAjax from './useAjax'
 import { useCallback, useContext, useState } from 'react'
 import { storysContextDispatchProvider } from '../context/storys-context'
+import userContext from '../context/user-context'
 
 const url = 'storys'
 
@@ -12,6 +13,7 @@ const useStorysApi = () => {
   const dispatch = useContext(storysContextDispatchProvider)
   // Requests should use the ajax format
   const ajax = useAjax()
+  const { token } = useContext(userContext)
 
   // INDEX
   const index = useCallback(async () => {
@@ -27,7 +29,7 @@ const useStorysApi = () => {
       setError(true)
     }
     setLoading(false)
-  }, [ajax, dispatch])
+  }, [ajax, dispatch, token])
 
   // SHOW
   const show = useCallback(
@@ -45,7 +47,7 @@ const useStorysApi = () => {
       }
       setLoading(false)
     },
-    [ajax, dispatch]
+    [ajax, dispatch, token]
   )
 
   // CREATE
@@ -72,7 +74,7 @@ const useStorysApi = () => {
       }
       setLoading(false)
     },
-    [ajax, dispatch]
+    [ajax, dispatch, token]
   )
 
   // PATCH
@@ -98,7 +100,7 @@ const useStorysApi = () => {
       }
       setLoading(false)
     },
-    [ajax, dispatch]
+    [ajax, dispatch, token]
   )
 
   // DELETE
@@ -119,7 +121,7 @@ const useStorysApi = () => {
       }
       setLoading(false)
     },
-    [ajax, dispatch]
+    [ajax, dispatch, token]
   )
   return {
     index,
