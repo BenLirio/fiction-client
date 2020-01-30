@@ -1,20 +1,21 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useMemo } from 'react'
 import currentStoryContext from '../context/current-story-context'
-import useStoryApi from '../hooks/useStorysApi'
 import userContext from '../context/user-context'
+import useStorysApi from '../hooks/useStorysApi'
 import Page from '../components/Page/Page'
 
 const Story = () => {
-  const story = useContext(currentStoryContext)
-  const { token } = useContext(userContext)
-  const { index } = useStoryApi()
-  useEffect(() => {
-    index()
-  }, [token, index])
-  if (story) {
+  const { loading, error } = useContext(currentStoryContext)
+  if (error) {
+    // There was an auth error most likely
+    // go back to home
+  } else if (loading) {
+    // Loading the story
+  } else {
+    // Everting should be good
     return <Page />
   }
-  return <div>story</div>
+  return null
 }
 
 export default Story

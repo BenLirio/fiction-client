@@ -4,9 +4,9 @@ import { storysContextDispatchProvider } from '../context/storys-context'
 
 const url = 'storys'
 
-const useServerApi = () => {
+const useStorysApi = () => {
   // Let user have access to the status
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   // Allow server api to dispatch to the context
   const dispatch = useContext(storysContextDispatchProvider)
@@ -38,7 +38,7 @@ const useServerApi = () => {
       try {
         res = await ajax({ url: `${url}/${id}` })
         // Successfully found story, add it to state
-        dispatch({ type: 'show', payload: res.data.storys })
+        dispatch({ type: 'show', payload: res.data.story })
       } catch (error) {
         // Failed to show
         setError(true)
@@ -58,10 +58,14 @@ const useServerApi = () => {
         res = await ajax({
           url,
           method: 'POST',
-          data
+          data: {
+            story: {
+              text: data
+            }
+          }
         })
         // Created story
-        dispatch({ type: 'received', payload: [res.data.story] })
+        dispatch({ type: 'create', payload: res.data.story })
       } catch (error) {
         // Failed to create story
         setError(true)
@@ -73,7 +77,7 @@ const useServerApi = () => {
 
   // PATCH
   const update = useCallback(
-    async ({ data, id }) => {
+    async (id, data) => {
       setError(false)
       setLoading(true)
       let res
@@ -81,17 +85,13 @@ const useServerApi = () => {
         res = await ajax({
           url: `${url}/${id}`,
           method: 'PATCH',
-          data
+          data: {
+            story: {
+              text: data
+            }
+          }
         })
         // Updated a story
-        const {
-          data: { story }
-        } = res
-        dispatch({
-          type: 'edit',
-          payload: [story],
-          id: story._id
-        })
       } catch (error) {
         // Failed to update story
         setError(true)
@@ -131,4 +131,4 @@ const useServerApi = () => {
     error
   }
 }
-export default useServerApi
+export default useStorysApi

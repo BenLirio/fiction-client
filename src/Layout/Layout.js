@@ -12,7 +12,6 @@ const useStyles = makeStyles(theme => ({
 
 const Layout = ({ children }) => {
   const classes = useStyles()
-
   return (
     <>
       <Header />

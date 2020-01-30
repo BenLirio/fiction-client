@@ -7,28 +7,42 @@ const storysReducer = (state, action) => {
   switch (action.type) {
     // Index takes in an array and sets all state to the array
     // first mapping over the items and only getting data and id
-    case 'index':
-      return payload.map(i => ({ id: i._id, data: i.data }))
+    case 'index': {
+      return payload.map(i => ({ id: i._id, text: JSON.parse(i.text) }))
+    }
+    case 'show': {
+      id = payload._id
+      const rest = state.filter(i => i.id !== id)
+      const found = state.find(i => i.id === id) || {}
+      found.text = JSON.parse(payload.text)
+      found.id = payload._id
+      return [...rest, found]
+    }
     // create takes maps the object and adds it at the end of the array
-    case 'create':
+    case 'create': {
       const created = {
         id: payload._id,
-        data: payload.data
+        text: JSON.parse(payload.text)
       }
       return [...state, created]
+    }
     // Update takes in an id and data
-    case 'update':
+    case 'update': {
       id = payload._id
       const rest = state.filter(i => i.id !== id)
       const found = state.find(i => i.id === id)
-      found.data = payload.data
+      found.text = JSON.parse(payload.text)
+      console.log('found', found)
       return [...rest, found]
-    case 'destroy':
+    }
+    case 'destroy': {
       id = payload._id
       return state.filter(i => i.id !== id)
-    default:
+    }
+    default: {
       console.error(action)
       throw new Error()
+    }
   }
 }
 
