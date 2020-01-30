@@ -3,7 +3,7 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import SettingsIcon from '@material-ui/icons/Settings'
 import { useHistory } from 'react-router-dom'
 
-const Settings = () => {
+const SettingsItem = () => {
   const history = useHistory()
   const goToSettings = () => {
     history.push('/settings')
@@ -18,4 +18,4 @@ const Settings = () => {
   )
 }
 
-export default Settings
+export default SettingsItem

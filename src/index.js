@@ -7,15 +7,15 @@ import * as serviceWorker from './serviceWorker'
 import { ModalContextProvider } from './context/modal-context'
 import { UserContextProvider } from './context/user-context'
 import { CssBaseline, ThemeProvider } from '@material-ui/core'
-import theme from './theme'
-import { BrowserRouter, HashRouter } from 'react-router-dom'
+import theme, { ThemeEditorProvider } from './theme'
+import { HashRouter } from 'react-router-dom'
 import { StorysContextProvider } from './context/storys-context'
 import { DrawerContextProvider } from './context/drawer-context'
 console.log(process)
 const rootJsx = (
   <UserContextProvider>
     <ModalContextProvider>
-      <ThemeProvider theme={theme}>
+      <ThemeEditorProvider>
         <HashRouter>
           <StorysContextProvider>
             <DrawerContextProvider>
@@ -24,7 +24,7 @@ const rootJsx = (
             </DrawerContextProvider>
           </StorysContextProvider>
         </HashRouter>
-      </ThemeProvider>
+      </ThemeEditorProvider>
     </ModalContextProvider>
   </UserContextProvider>
 )

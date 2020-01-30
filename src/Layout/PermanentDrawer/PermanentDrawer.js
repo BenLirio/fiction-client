@@ -13,7 +13,7 @@ import useStorysApi from '../../hooks/useStorysApi'
 import DrawerContext from '../../context/drawer-context'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import Profile from './ProfileItem'
-import Settings from './Settings'
+import Settings from './SettingsItem'
 import clsx from 'clsx'
 
 const useStyles = makeStyles(theme => ({

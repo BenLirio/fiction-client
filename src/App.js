@@ -7,6 +7,7 @@ import NotFound from './views/NotFound'
 import Modals from './components/Modal/Modals'
 import { CurrentStoryContextProvider } from './context/current-story-context'
 import Profile from './views/Profile'
+import Settings from './views/Settings'
 
 const App = () => {
   return (
@@ -26,6 +27,9 @@ const App = () => {
         </Route>
         <Route path="/profile">
           <Profile />
+        </Route>
+        <Route path="/settings">
+          <Settings />
         </Route>
       </Switch>
     </Layout>
