@@ -42,11 +42,11 @@ const useAuth = () => {
       setError(false)
       const temp = token
       setToken('')
+      history.push('/')
       signOut(token)
         .then(() => {
           setLoading(false)
           localStorage.removeItem('token')
-          history.push('/')
         })
         .catch(() => {
           setToken(temp)
