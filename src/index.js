@@ -10,12 +10,12 @@ import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import theme from './theme'
 import { BrowserRouter } from 'react-router-dom'
 import { StorysContextProvider } from './context/storys-context'
-
+console.log(process)
 const rootJsx = (
   <UserContextProvider>
     <ModalContextProvider>
       <ThemeProvider theme={theme}>
-        <BrowserRouter basename="/fiction-client/">
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <StorysContextProvider>
             <CssBaseline />
             <App />
