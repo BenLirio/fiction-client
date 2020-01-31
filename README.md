@@ -1,68 +1,72 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Fiction Client
 
-## Available Scripts
+This SPA is designed to have users record thier stories and use the help of 2020 technology to assist them.
+The current version works more as note taking software. In the future I will be integrating ai to help user complete their sentences.
 
-In the project directory, you can run:
+## To view more information about the back end go here
 
-### `yarn start`
+https://benlirio.github.io/fiction-server
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies Used:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- React
+- Material UI
+- Check the package json for a complete list of dependencies
+- babel
+- gh-pages
 
-### `yarn test`
+## To view both front and back end deployed go here:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Note, the back end is just a REST api with no index.html file.
 
-### `yarn build`
+https://fiction-api.herokuapp.com/
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+https://benlirio.github.io/fiction-client
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Unsolved problems
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The code got a bit messy nearing the end of the project. Mainly I had difficulties with managing state and having one true state while not abusing the server with constant POST requests after every single letter is typed.
 
-### `yarn eject`
+## Front end planning
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Starting this project the scope was very large. I was planning on adding text analysis and much more.
+I got caught on how to actually display the text. Decided to go with this software named slate. It helps with text editing in the browser. The only problem with this is that slate is a very base level interface. I had to do alot of writing my own code for it to work. I will say the documentation for slate is very easy to understand, but it wasn't just npm install and all set.
+I ended up doing alot more styling than I had expected. My main issues of state come when the drawer is open or closed.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Set up instruction
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+fork and clone the repo then use
+`npm install`
+to download dependencies.
+After if you want to serve to local 7165 use `yarn start` in order to get hot reload.
+If you would like to deploy use `yarn build` then `yarn deploy` this will create a new branch named gh pages and deploy to your own git hub account.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Below is the pre planning for this project
 
-## Learn More
+# Project Name: Fiction Writer
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Description: Assists writers of fiction by helping them overcome thier writers block while inspiring them with new creative ideas.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Target audience - fiction writer wanting a digital place to store writings.
 
-### Code Splitting
+Target Device - Laptop and up (over 900px) moderate internet connection is required.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## User Stories
 
-### Analyzing the Bundle Size
+- New User want to get started with Fiction Writer by seeing examples of others work.
+- New writer wants to try the service out for themselves before signing up.
+- User wants to sign up in order to save their new creative piece of art.
+- Return user wants to view their previous works of art in order to continue writing them.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Reach Goals
 
-### Making a Progressive Web App
+- Use dictionary api to help with word choice.
+- Add tabs for characters and Locations of the story to quickly reference ideas.
+- Use text analyzing to help writer know how they are coming across.
+- Use text analysis to pull out characters and locations so the user doesn't need to manually put them in the tab.
+- (Very reach) Use api with AI to help user over writers block by generating text text based on context for them.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Wire frames
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Adobe XD
+https://xd.adobe.com/view/46710a0c-bc2b-4a53-7e0e-53ab4f84206d-3040/
