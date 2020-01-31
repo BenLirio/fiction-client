@@ -10,7 +10,6 @@ import userContext from '../../context/user-context'
 import AuthHeader from './AuthHeader/AuthHeader'
 import GuestHeader from './GuestHeader/GuestHeader'
 import MenuIcon from '@material-ui/icons/Menu'
-import { useHistory } from 'react-router-dom'
 import DrawerContext from '../../context/drawer-context'
 import clsx from 'clsx'
 
@@ -46,7 +45,6 @@ const useStyles = makeStyles(theme => ({
 
 const Header = () => {
   const { token } = useContext(userContext)
-  const history = useHistory()
   const classes = useStyles()
   const { openDrawer, drawerOpen } = useContext(DrawerContext)
 

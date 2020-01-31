@@ -11,15 +11,15 @@ const DrawerContext = React.createContext(initialDrawerState)
 
 export const DrawerContextProvider = ({ children }) => {
   const { token } = useContext(userContext)
-  const [drawerOpen, setDrawerOpen] = useState(token && true)
+  const [drawerOpen, setDrawerOpen] = useState(token ? true : false)
   const openDrawer = () => {
-    setDrawerOpen(token && true)
+    setDrawerOpen(token ? true : false)
   }
   const closeDrawer = () => {
     setDrawerOpen(false)
   }
   useEffect(() => {
-    setDrawerOpen(token && true)
+    setDrawerOpen(token ? true : false)
   }, [token])
   return (
     <DrawerContext.Provider

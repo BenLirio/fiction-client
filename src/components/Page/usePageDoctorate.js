@@ -1,23 +1,8 @@
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { Text } from 'slate'
 
 const usePageDoctorate = () => {
-  const searches = [
-    ['the', '#faa'],
-    ['eht', '#afa'],
-    ['the', '#faa'],
-    ['eht', '#afa'],
-    ['the', '#faa'],
-    ['eht', '#afa'],
-    ['the', '#faa'],
-    ['eht', '#afa'],
-    ['the', '#faa'],
-    ['eht', '#afa'],
-    ['the', '#faa'],
-    ['eht', '#afa'],
-    ['the', '#faa'],
-    ['eht', '#afa']
-  ]
+  const searches = []
   const decorate = useCallback(
     ([node, path]) => {
       const ranges = []

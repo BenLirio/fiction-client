@@ -1,5 +1,5 @@
 import React, { useMemo, useEffect } from 'react'
-import { makeStyles, Fade, Slide } from '@material-ui/core'
+import { makeStyles, Fade } from '@material-ui/core'
 import { Slate, Editable, withReact } from 'slate-react'
 import { createEditor } from 'slate'
 import usePageState from './usePageState'
@@ -8,8 +8,6 @@ import useCustomLeaf from './useCustomLeaf'
 import usePageDoctorate from './usePageDoctorate'
 import usePageEvents from './usePageEvents'
 import withLayout from './withLayout'
-import useAjax from '../../hooks/useAjax'
-import Axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,7 +27,6 @@ const Page = () => {
   const renderLeaf = useCustomLeaf()
   const decorate = usePageDoctorate()
   const onEvents = usePageEvents()
-  const ajax = useAjax()
   useEffect(() => {}, [])
   return (
     <Fade in={true} direction="up">

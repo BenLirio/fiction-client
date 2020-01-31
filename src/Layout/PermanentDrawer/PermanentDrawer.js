@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import {
   Drawer,
   List,
@@ -6,7 +6,6 @@ import {
   Divider,
   IconButton
 } from '@material-ui/core'
-import userContext from '../../context/user-context'
 import NewStory from './NewStory'
 import StoryList from './StoryList'
 import useStorysApi from '../../hooks/useStorysApi'
@@ -48,7 +47,6 @@ const useStyles = makeStyles(theme => ({
 
 const PermanentDrawer = () => {
   const { index } = useStorysApi()
-  const { token } = useContext(userContext)
   const { drawerOpen, closeDrawer } = useContext(DrawerContext)
   // Indexing stories so that it gives my menu bar a chance to load them
   // before the user presses the button.

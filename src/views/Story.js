@@ -1,7 +1,5 @@
-import React, { useContext, useMemo } from 'react'
+import React, { useContext } from 'react'
 import currentStoryContext from '../context/current-story-context'
-import userContext from '../context/user-context'
-import useStorysApi from '../hooks/useStorysApi'
 import Page from '../components/Page/Page'
 
 const Story = () => {

@@ -1,6 +1,5 @@
-import React, { useEffect, useCallback } from 'react'
+import React, { useEffect } from 'react'
 import useStorysApi from '../hooks/useStorysApi'
-import useRandomNameGenerator from '../hooks/useRandomName'
 import Loading from './Loading'
 import ErrorBar from './ErrorBar'
 import StorysList from './StorysList'
@@ -12,9 +11,7 @@ const Stroys = () => {
   const { index, loading: indexLoading, error: indexError } = useStorysApi({
     loading: true
   })
-  const { create, loading: createLoading, error: createError } = useStorysApi()
 
-  const generator = useRandomNameGenerator()
   // Index should only change if user token changes,
   // Only re index when the user signs in again.
   useEffect(() => {

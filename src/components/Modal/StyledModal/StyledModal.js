@@ -1,15 +1,7 @@
 import React, { useContext } from 'react'
-import {
-  Modal,
-  makeStyles,
-  Fade,
-  Grow,
-  fade,
-  Slide,
-  Backdrop,
-  FormControl
-} from '@material-ui/core'
+import { Modal, makeStyles, Fade, Backdrop } from '@material-ui/core'
 import modalContext from '../../../context/modal-context'
+import { Alert } from '@material-ui/lab'
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -25,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const StyledModal = ({ name, children }) => {
-  const { current, close, loading, setLoading, error, setError } = useContext(
+  const { current, close, setLoading, error, setError } = useContext(
     modalContext
   )
   const classes = useStyles()
@@ -46,7 +38,10 @@ const StyledModal = ({ name, children }) => {
       }}
     >
       <Fade in={current === name}>
-        <div className={classes.paper}>{children}</div>
+        <div className={classes.paper}>
+          {error && <Alert severity="error">Failed</Alert>}
+          {children}
+        </div>
       </Fade>
     </Modal>
   )

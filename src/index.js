@@ -6,12 +6,12 @@ import * as serviceWorker from './serviceWorker'
 
 import { ModalContextProvider } from './context/modal-context'
 import { UserContextProvider } from './context/user-context'
-import { CssBaseline, ThemeProvider } from '@material-ui/core'
-import theme, { ThemeEditorProvider } from './theme'
+import { CssBaseline } from '@material-ui/core'
+import { ThemeEditorProvider } from './theme'
 import { HashRouter } from 'react-router-dom'
 import { StorysContextProvider } from './context/storys-context'
 import { DrawerContextProvider } from './context/drawer-context'
-console.log(process)
+import { SavedContextProvider } from './context/saving-data'
 const rootJsx = (
   <UserContextProvider>
     <ModalContextProvider>
@@ -19,8 +19,10 @@ const rootJsx = (
         <HashRouter>
           <StorysContextProvider>
             <DrawerContextProvider>
-              <CssBaseline />
-              <App />
+              <SavedContextProvider>
+                <CssBaseline />
+                <App />
+              </SavedContextProvider>
             </DrawerContextProvider>
           </StorysContextProvider>
         </HashRouter>

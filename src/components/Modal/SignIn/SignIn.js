@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import StyledModal from '../StyledModal/StyledModal'
-import { Button, TextField, FormControl, Fade } from '@material-ui/core'
+import { Button, TextField } from '@material-ui/core'
 import useInput from '../../../hooks/useInput'
 import useAuth from '../../../hooks/useAuth'
+import modalContext from '../../../context/modal-context'
 
 const SignInModal = () => {
-  const [email, bindEmail] = useInput('')
-  const [password, bindPassword] = useInput('')
+  const [email, bindEmail, resetEmail] = useInput('')
+  const [password, bindPassword, resetPassword] = useInput('')
   const { signIn } = useAuth()
+  const { current } = useContext(modalContext)
+  useEffect(() => {
+    resetPassword()
+    resetEmail()
+  }, [current, resetPassword, resetEmail])
   const onSignInClicked = () => {
     signIn({ email, password })
   }

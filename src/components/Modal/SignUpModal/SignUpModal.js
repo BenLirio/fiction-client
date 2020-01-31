@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import StyledModal from '../StyledModal/StyledModal'
 import {
   Button,
   TextField,
-  createStyles,
   FormControl,
   makeStyles,
   Typography,
@@ -13,8 +12,9 @@ import {
 } from '@material-ui/core'
 import useInput from '../../../hooks/useInput'
 import useAuth from '../../../hooks/useAuth'
+import modalContext from '../../../context/modal-context'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: 'grid',
     gridTemplateRows: '80px 1fr 1fr 1fr 80px',
@@ -25,11 +25,21 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const SignUpModal = () => {
+  const { current } = useContext(modalContext)
   const classes = useStyles()
   const { signUp } = useAuth()
-  const [email, bindEmail] = useInput('')
-  const [password, bindPassword] = useInput('')
-  const [passwordConfirmation, bindPasswordConfirmation] = useInput('')
+  const [email, bindEmail, resetEmail] = useInput('')
+  const [password, bindPassword, resetPassword] = useInput('')
+  const [
+    passwordConfirmation,
+    bindPasswordConfirmation,
+    resetPasswordConfirmation
+  ] = useInput('')
+  useEffect(() => {
+    resetEmail()
+    resetPassword()
+    resetPasswordConfirmation()
+  }, [current, resetEmail, resetPassword, resetPasswordConfirmation])
   const onSignUpClicked = () => {
     signUp({ email, password, passwordConfirmation })
   }

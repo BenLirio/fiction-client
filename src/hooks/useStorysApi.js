@@ -1,8 +1,8 @@
 import useAjax from './useAjax'
 import { useCallback, useContext, useState } from 'react'
 import { storysContextDispatchProvider } from '../context/storys-context'
-import userContext from '../context/user-context'
 import { useHistory } from 'react-router-dom'
+import SavedContext from '../context/saving-data'
 
 const url = 'storys'
 
@@ -18,7 +18,7 @@ const useStorysApi = (options = {}) => {
   const dispatch = useContext(storysContextDispatchProvider)
   // Requests should use the ajax format
   const ajax = useAjax()
-  const { token } = useContext(userContext)
+  const { setSaved } = useContext(SavedContext)
 
   // INDEX
   const index = useCallback(async () => {
@@ -34,7 +34,7 @@ const useStorysApi = (options = {}) => {
       setError(true)
     }
     setLoading(false)
-  }, [ajax, dispatch, token])
+  }, [ajax, dispatch])
 
   // SHOW
   const show = useCallback(
@@ -52,7 +52,7 @@ const useStorysApi = (options = {}) => {
       }
       setLoading(false)
     },
-    [ajax, dispatch, token]
+    [ajax, dispatch]
   )
 
   // CREATE
@@ -80,7 +80,7 @@ const useStorysApi = (options = {}) => {
       }
       setLoading(false)
     },
-    [ajax, dispatch, token]
+    [ajax, dispatch, history]
   )
 
   // PATCH
@@ -88,9 +88,8 @@ const useStorysApi = (options = {}) => {
     async (id, data) => {
       setError(false)
       setLoading(true)
-      let res
       try {
-        res = await ajax({
+        await ajax({
           url: `${url}/${id}`,
           method: 'PATCH',
           data: {
@@ -100,13 +99,14 @@ const useStorysApi = (options = {}) => {
           }
         })
         // Updated a story
+        setSaved(true)
       } catch (error) {
         // Failed to update story
         setError(true)
       }
       setLoading(false)
     },
-    [ajax, dispatch, token]
+    [ajax, setSaved]
   )
 
   // DELETE
@@ -127,7 +127,7 @@ const useStorysApi = (options = {}) => {
       }
       setLoading(false)
     },
-    [ajax, dispatch, token]
+    [ajax, dispatch]
   )
   return {
     index,

@@ -1,13 +1,10 @@
 import React, { useContext } from 'react'
 import storysContext from '../context/storys-context'
 import {
-  GridList,
   makeStyles,
-  Typography,
   List,
   ListItem,
   ListItemText,
-  ListItemIcon,
   ListItemSecondaryAction,
   IconButton
 } from '@material-ui/core'

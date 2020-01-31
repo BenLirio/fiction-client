@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
 import StyledModal from '../StyledModal/StyledModal'
-import { Button, TextField, FormControl, Fade } from '@material-ui/core'
+import { Button, TextField } from '@material-ui/core'
 import useInput from '../../../hooks/useInput'
 import useAuth from '../../../hooks/useAuth'
+import modalContext from '../../../context/modal-context'
 
 const ChangePasswordModal = () => {
-  const [oldPassword, bindOldPassword] = useInput('')
-  const [newPassword, bindNewPassword] = useInput('')
+  const [oldPassword, bindOldPassword, resetOldPassword] = useInput('')
+  const [newPassword, bindNewPassword, resetNewPassword] = useInput('')
   const { changePassword } = useAuth()
+  const { current } = useContext(modalContext)
   const onSignInClicked = () => {
     changePassword({ oldPassword, newPassword })
   }
+  useEffect(() => {
+    resetNewPassword()
+    resetOldPassword()
+  }, [current, resetOldPassword, resetNewPassword])
   return (
     <StyledModal name="ChangePassword">
       <TextField

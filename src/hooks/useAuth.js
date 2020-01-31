@@ -14,6 +14,19 @@ const useAuth = () => {
       setError(false)
       signUp(credentials)
         .then(() => {
+          setLoading(true)
+          setError(false)
+          signIn(credentials)
+            .then(({ data }) => {
+              setToken(data.user.token)
+              setLoading(false)
+              localStorage.setItem('token', JSON.stringify(data.user.token))
+              close()
+            })
+            .catch(() => {
+              setLoading(false)
+              setError(true)
+            })
           setLoading(false)
           close()
         })

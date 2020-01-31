@@ -1,14 +1,7 @@
-import React, {
-  useState,
-  useContext,
-  useEffect,
-  useCallback,
-  useReducer
-} from 'react'
+import React, { useContext, useEffect, useCallback } from 'react'
 import storysContext from './storys-context'
 import { useParams } from 'react-router-dom'
 import useStorysApi from '../hooks/useStorysApi'
-import storysReducer from '../reducers/storysReducer'
 
 const currentStoryContext = React.createContext({})
 
@@ -31,17 +24,17 @@ export const CurrentStoryContextProvider = ({ children }) => {
     data => {
       idUpdate(id, JSON.stringify(data))
     },
-    [id]
+    [id, idUpdate]
   )
   const { destroy: idDestroy } = useStorysApi()
   const destroy = useCallback(() => {
     idDestroy(id)
-  }, [id])
+  }, [id, idDestroy])
 
   // only run if the id changes
   useEffect(() => {
     show(id)
-  }, [id])
+  }, [id, show])
   const story = useContext(storysContext).find(story => story.id === id)
   if (story) {
     return (
