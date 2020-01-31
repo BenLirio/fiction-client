@@ -2,7 +2,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import React, { useState, useEffect } from 'react'
 
 const defaultTheme = {
-  drawerWidth: 240
+  drawerWidth: 280
 }
 
 const ThemeEditor = React.createContext(defaultTheme)

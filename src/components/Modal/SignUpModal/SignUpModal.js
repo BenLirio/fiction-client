@@ -5,10 +5,7 @@ import {
   TextField,
   FormControl,
   makeStyles,
-  Typography,
-  FormLabel,
-  Checkbox,
-  FormControlLabel
+  Typography
 } from '@material-ui/core'
 import useInput from '../../../hooks/useInput'
 import useAuth from '../../../hooks/useAuth'
@@ -54,16 +51,10 @@ const SignUpModal = () => {
           label="Confirm"
           {...bindPasswordConfirmation}
         />
-        <div>
-          <FormControlLabel
-            control={<Checkbox />}
-            label="This is not my real email"
-          />
-        </div>
+
         <Button onClick={onSignUpClicked} variant="contained" color="primary">
           Create Account
         </Button>
-        <FormLabel>Label</FormLabel>
       </FormControl>
     </StyledModal>
   )
