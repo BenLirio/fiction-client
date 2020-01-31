@@ -38,12 +38,12 @@ export const signOut = token => {
   })
 }
 
-export const changePassword = (passwords, user) => {
+export const changePassword = (token, passwords) => {
   return axios({
     url: apiUrl + '/change-password',
     method: 'PATCH',
     headers: {
-      Authorization: `Token token=${user.token}`
+      Authorization: `Token token=${token}`
     },
     data: {
       passwords: {

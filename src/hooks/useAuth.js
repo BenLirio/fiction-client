@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import modalContext from '../context/modal-context'
-import { signIn, signUp, signOut } from '../api/auth'
+import { signIn, signUp, signOut, changePassword } from '../api/auth'
 import userContext from '../context/user-context'
 import { useHistory } from 'react-router-dom'
 
@@ -50,6 +50,18 @@ const useAuth = () => {
         })
         .catch(() => {
           setToken(temp)
+          setLoading(false)
+          setError(true)
+        })
+    },
+    changePassword: passwords => {
+      setLoading(true)
+      setError(false)
+      changePassword(token, passwords)
+        .then(() => {
+          setLoading(false)
+        })
+        .catch(() => {
           setLoading(false)
           setError(true)
         })

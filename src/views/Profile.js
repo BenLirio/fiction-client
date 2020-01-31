@@ -3,6 +3,8 @@ import { Typography, makeStyles, Fade, Button } from '@material-ui/core'
 import storysContext from '../context/storys-context'
 import useAuth from '../hooks/useAuth'
 import { useHistory } from 'react-router-dom'
+import { changePassword } from '../api/auth'
+import modalContext from '../context/modal-context'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,8 +22,12 @@ const Profile = () => {
   const storys = useContext(storysContext)
   const { signOut } = useAuth()
   const history = useHistory()
+  const { open } = useContext(modalContext)
   const onSignOut = () => {
     signOut()
+  }
+  const onChangePasswordPressed = () => {
+    open('ChangePassword')
   }
   return (
     <Fade in={true}>
@@ -35,6 +41,13 @@ const Profile = () => {
           onClick={onSignOut}
         >
           Log out
+        </Button>
+        <Button
+          style={{ marginTop: '20px' }}
+          variant="outlined"
+          onClick={onChangePasswordPressed}
+        >
+          Change Password
         </Button>
       </div>
     </Fade>

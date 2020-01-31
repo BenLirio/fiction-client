@@ -9,7 +9,6 @@ const storysReducer = (state, action) => {
     // first mapping over the items and only getting data and id
     // When indexing all sort by date
     case 'index': {
-      console.log(payload[0].updatedAt)
       return payload
         .map(i => ({
           id: i._id,

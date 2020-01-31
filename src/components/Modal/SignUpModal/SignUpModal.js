@@ -51,7 +51,7 @@ const SignUpModal = () => {
           />
         </div>
         <Button onClick={onSignUpClicked} variant="contained" color="primary">
-          Login
+          Create Account
         </Button>
         <FormLabel>Label</FormLabel>
       </FormControl>
