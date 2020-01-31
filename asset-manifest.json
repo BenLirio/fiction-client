@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/fiction-client/static/js/main.555f8a50.chunk.js",
-    "main.js.map": "/fiction-client/static/js/main.555f8a50.chunk.js.map",
+    "main.js": "/fiction-client/static/js/main.d57deeaa.chunk.js",
+    "main.js.map": "/fiction-client/static/js/main.d57deeaa.chunk.js.map",
     "runtime-main.js": "/fiction-client/static/js/runtime-main.fab3b7f7.js",
     "runtime-main.js.map": "/fiction-client/static/js/runtime-main.fab3b7f7.js.map",
-    "static/js/2.cf6464f4.chunk.js": "/fiction-client/static/js/2.cf6464f4.chunk.js",
-    "static/js/2.cf6464f4.chunk.js.map": "/fiction-client/static/js/2.cf6464f4.chunk.js.map",
+    "static/js/2.aff6f420.chunk.js": "/fiction-client/static/js/2.aff6f420.chunk.js",
+    "static/js/2.aff6f420.chunk.js.map": "/fiction-client/static/js/2.aff6f420.chunk.js.map",
     "index.html": "/fiction-client/index.html",
-    "precache-manifest.d97a95887d38dee4151ec5cac7733a40.js": "/fiction-client/precache-manifest.d97a95887d38dee4151ec5cac7733a40.js",
+    "precache-manifest.d0e0c7a05c166de49dd4b67730c1885c.js": "/fiction-client/precache-manifest.d0e0c7a05c166de49dd4b67730c1885c.js",
     "service-worker.js": "/fiction-client/service-worker.js",
-    "static/js/2.cf6464f4.chunk.js.LICENSE": "/fiction-client/static/js/2.cf6464f4.chunk.js.LICENSE"
+    "static/js/2.aff6f420.chunk.js.LICENSE": "/fiction-client/static/js/2.aff6f420.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.fab3b7f7.js",
-    "static/js/2.cf6464f4.chunk.js",
-    "static/js/main.555f8a50.chunk.js"
+    "static/js/2.aff6f420.chunk.js",
+    "static/js/main.d57deeaa.chunk.js"
   ]
 }
