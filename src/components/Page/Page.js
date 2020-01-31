@@ -30,20 +30,7 @@ const Page = () => {
   const decorate = usePageDoctorate()
   const onEvents = usePageEvents()
   const ajax = useAjax()
-  useEffect(() => {
-    const url = 'https://transformer.huggingface.co/autocomplete/gpt2/medium'
-    const options = {
-      context: 'context',
-      model_size: 'gpt2/xl',
-      top_p: 0.9,
-      temperature: 1,
-      max_time: 5
-    }
-    // Axios.post(
-    //   'https://transformer.huggingface.co/autocomplete/gpt2/medium',
-    //   options
-    // ).then(console.log)
-  }, [])
+  useEffect(() => {}, [])
   return (
     <Fade in={true} direction="up">
       <div className={classes.root}>

@@ -56,13 +56,15 @@ const Header = () => {
         className={clsx(classes.appBar, drawerOpen && classes.appBarDrawerOpen)}
       >
         <Toolbar>
-          <IconButton
-            color="inherit"
-            className={clsx(classes.menuIcon, drawerOpen && classes.hide)}
-            onClick={openDrawer}
-          >
-            <MenuIcon color="inherit" />
-          </IconButton>
+          {token && (
+            <IconButton
+              color="inherit"
+              className={clsx(classes.menuIcon, drawerOpen && classes.hide)}
+              onClick={openDrawer}
+            >
+              <MenuIcon color="inherit" />
+            </IconButton>
+          )}
           <Typography variant="h5" className={classes.title}>
             Fiction Writer
           </Typography>

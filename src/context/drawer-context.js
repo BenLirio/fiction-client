@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import userContext from './user-context'
 
 const initialDrawerState = {
   open: null,
@@ -9,13 +10,17 @@ const initialDrawerState = {
 const DrawerContext = React.createContext(initialDrawerState)
 
 export const DrawerContextProvider = ({ children }) => {
-  const [drawerOpen, setDrawerOpen] = useState(true)
+  const { token } = useContext(userContext)
+  const [drawerOpen, setDrawerOpen] = useState(token && true)
   const openDrawer = () => {
-    setDrawerOpen(true)
+    setDrawerOpen(token && true)
   }
   const closeDrawer = () => {
     setDrawerOpen(false)
   }
+  useEffect(() => {
+    setDrawerOpen(token && true)
+  }, [token])
   return (
     <DrawerContext.Provider
       value={{

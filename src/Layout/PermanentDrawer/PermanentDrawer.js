@@ -48,12 +48,13 @@ const useStyles = makeStyles(theme => ({
 
 const PermanentDrawer = () => {
   const { index } = useStorysApi()
+  const { token } = useContext(userContext)
   const { drawerOpen, closeDrawer } = useContext(DrawerContext)
   // Indexing stories so that it gives my menu bar a chance to load them
   // before the user presses the button.
   useEffect(() => {
     index()
-  }, [])
+  }, [index])
 
   const classes = useStyles()
   return (
